@@ -42,7 +42,7 @@ a {
   text-decoration: underline;
 }
 
-.menu [aria-current="page"] {
+.menu [aria-current] {
   color: #1a1a1a;
 }
 
