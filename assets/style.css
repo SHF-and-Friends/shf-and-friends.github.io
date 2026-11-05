@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  background: #fff;
+  color: #1a1a1a;
+  font: 1rem / 1.55 Georgia, "Times New Roman", Times, serif;
+}
+
+.container {
+  max-width: 730px;
+  margin: 100px auto 38px;
+  padding: 0 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+}
+
+h2 {
+  font-size: 1.17rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+a {
+  color: #4a6fa5;
+}
+
+.menu {
+  margin-top: 0.4em;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu [aria-current="page"] {
+  color: #1a1a1a;
+}
+
+.menu .sep {
+  margin: 0 0.22em;
+  color: #6b625a;
+}
+
+a:focus-visible {
+  outline: 2px solid #4a6fa5;
+  outline-offset: 3px;
+}
+
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid #d8cfc4;
+}
+
+@media (max-width: 700px) {
+  .container {
+    margin-top: 38px;
+    padding: 0 16px;
+  }
+
+  hr {
+    margin: 1.5em 0;
+  }
+}
