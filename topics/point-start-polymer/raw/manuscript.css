@@ -7,6 +7,12 @@
   font-size: 1.35rem;
 }
 
+.manuscript .ai-disclosure {
+  padding: 0.65em 0.85em;
+  border-left: 3px solid #6b625a;
+  background: #f6f3ef;
+}
+
 .manuscript h4,
 .manuscript h5 {
   line-height: 1.3;
