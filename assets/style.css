@@ -46,6 +46,10 @@ a {
   color: #1a1a1a;
 }
 
+.menu [aria-current="page"] {
+  font-weight: bold;
+}
+
 .menu .sep {
   margin: 0 0.22em;
   color: #6b625a;
