@@ -60,6 +60,22 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+.overview-figure {
+  margin: 1.75rem 0;
+}
+
+.overview-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.overview-figure figcaption {
+  margin-top: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
 hr {
   margin: 2em 0;
   border: 0;
