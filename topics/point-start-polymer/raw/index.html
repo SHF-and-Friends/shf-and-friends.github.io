@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Raw · The critical polymer measure · SHF and Friends</title>
   <link rel="stylesheet" href="../../../assets/style.css">
+  <link rel="stylesheet" href="manuscript.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
 </head>
 <body>
   <div class="container">
@@ -30,11 +32,939 @@
         <span class="sep" aria-hidden="true">·</span>
         <a href="./" aria-current="page">Raw</a>
       </nav>
-      <details class="tumbleweed" open>
-        <summary>Tumbleweed animation</summary>
-        <img src="https://transverse-instability.github.io/assets/tumbleweed.gif?v=1793447360"
-             width="720" height="126" alt="A tumbleweed rolls past.">
-      </details>
+      <hr>
+      <!-- Converted from point-start-polymer-proof.tex with TeX4ht. -->
+      <article class="manuscript" aria-labelledby="manuscript-title">
+<h3 class="manuscript-title" id="manuscript-title">A critical planar polymer from a prescribed point</h3><section class="abstract" role="doc-abstract">
+<h4 class="abstracttitle">
+<strong>Abstract</strong>
+</h4>
+<p class="noindent">We  give  a  proof,  using  the  existing  critical  stochastic  heat  flow,  of  convergence  of  the
+     normalized Gaussian nearest-neighbour polymer from a prescribed deterministic point to a
+     random probability on continuous paths, with free terminal endpoint. The limit is a measurable
+     function of the stochastic heat flow. A temporal regularization converges to it in probability,
+     and the discrete polymer converges in distribution. The proof separates cancellation of the
+     initial random mass from control of the initial path. It includes the operator argument needed
+     to identify paths at a fixed positive cutoff, and a finite-lattice estimate uniform over the cutoffs
+     used near time zero. The imported stochastic heat flow, Gaussian convexity, renewal, and
+     fourth-moment results are stated with their source hypotheses.
+</p>
+</section>
+<div class="manuscript-status">
+<p class="noindent">Research manuscript, 5 November 2026. Independently checked internally against the stated inputs; not
+externally peer reviewed.</p></div>
+<h4 id="contents"><a id="x1-1000"></a>Contents</h4>
+<nav aria-labelledby="contents" class="manuscript-contents">
+<span>1 <a href="#the-polymer-and-its-limit" id="QQ2-1-2">The polymer and its limit</a></span>
+ <span class="subsection-entry">1.1 <a href="#relation-to-existing-polymer-measures" id="QQ2-1-3">Relation to existing polymer measures</a></span>
+ <span class="subsection-entry">1.2 <a href="#coordinates-and-parameters" id="QQ2-1-4">Coordinates and parameters</a></span>
+ <span>2 <a href="#inputs-and-finitelattice-estimates" id="QQ2-1-5">Inputs and finite-lattice estimates</a></span>
+ <span class="subsection-entry">2.1 <a href="#the-finitebuffer-output" id="QQ2-1-10">The finite-buffer output</a></span>
+ <span>3 <a href="#the-fixedcutoff-path-limit" id="QQ2-1-11">The fixed-cutoff path limit</a></span>
+ <span class="subsection-entry">3.1 <a href="#the-pair-transfer-and-its-uniform-bound" id="QQ2-1-12">The pair transfer and its uniform bound</a></span>
+ <span class="subsection-entry">3.2 <a href="#from-weak-mixed-moments-to-strong-pair-convergence" id="QQ2-1-13">From weak mixed moments to strong pair convergence</a></span>
+ <span class="subsection-entry">3.3 <a href="#marked-cylinders-and-the-interface-approximation" id="QQ2-1-14">Marked cylinders and the interface approximation</a></span>
+ <span class="subsection-entry">3.4 <a href="#the-heat-root-the-brownian-prefix-and-normalization" id="QQ2-1-15">The heat root, the Brownian prefix, and normalization</a></span>
+ <span>4 <a href="#cancellation-for-tail-paths" id="QQ2-1-16">Cancellation for tail paths</a></span>
+ <span>5 <a href="#removing-the-continuum-cutoff" id="QQ2-1-17">Removing the continuum cutoff</a></span>
+ <span>6 <a href="#the-discrete-prefix-and-the-lattice-limit" id="QQ2-1-18">The discrete prefix and the lattice limit</a></span>
+ <span>A <a href="#discrete-shape-estimates-and-cancellation" id="QQ2-1-20">Discrete shape estimates and cancellation</a></span>
+ <span class="subsection-entry">A.1 <a href="#a-norm-adapted-to-the-heat-kernel" id="QQ2-1-21">A norm adapted to the heat kernel</a></span>
+ <span class="subsection-entry">A.2 <a href="#uniform-reset-estimates" id="QQ2-1-22">Uniform reset estimates</a></span>
+ <span class="subsection-entry">A.3 <a href="#the-terminal-response-and-a-common-buffer" id="QQ2-1-23">The terminal response and a common buffer</a></span>
+</nav>
+<h4 id="the-polymer-and-its-limit"><span class="titlemark">1   </span> <a id="x1-20001"></a>The polymer and its limit</h4>
+<p class="noindent">The critical stochastic heat flow is a measure in both endpoint variables. It therefore does not give a
+kernel at an arbitrary prescribed point by evaluation. Our object is instead the limit of the normalized
+discrete polymer from that point. A short initial segment carries a random scalar mass. Cancellation of
+that mass controls later observables, but does not by itself control excursions near the starting time. We
+prove these two assertions separately.
+</p><p class="indent">   Let \(S\) be simple symmetric nearest-neighbour walk on \(\mathbb{Z} ^2\), and set \(q_j(z)=P_0(S_j=z)\). The walk expectation \(E_z\) is distinct
+from the disorder expectation \(\mathbb{E} \). Let \((\omega _{j,z})\) be independent standard Gaussians. For even \(N\), choose \(\beta _N\ge 0\) so that </p><div class="display-math" id="equation-eq:tuning">
+\begin{equation} R_N=\sum _{j=1}^Nq_{2j}(0),\qquad \nu _N=e^{\beta _N^2}-1=\frac 1{R_N}\left (1+\frac {\vartheta _N}{\log N}\right ),\qquad \vartheta _N\longrightarrow \vartheta \in \mathbb{R} \,.\tag{1.1}\end{equation}
+</div><p>
+Only sufficiently large \(N\), for which the right side is positive, are used. Put \(W_{j,z}=\exp (\beta _N\omega _{j,z}-\beta _N^2/2)\) and \(\xi _{j,z}=W_{j,z}-1\). Transfers exclude
+entrance-time noise and include exit-time noise: </p><div class="display-math" id="equation-eq:kernel">
+\begin{equation} Z_{a,b}(z,w)=E_z\left [\prod _{j=a+1}^b W_{j,S_{j-a}}\,\mathbf{1}_{\{S_{b-a}=w\}}\right ],\qquad Z_{a,a}=I\,.\tag{1.2}\end{equation}
+</div><p> Here the disorder labels are physical times. Thus \(Z_{a,b}Z_{b,c}=Z_{a,c}\).
+Rows act on the left; \(Z_{a,b}(\phi ,f)=\phi Z_{a,b}f\).
+</p><p class="indent">   Fix \(x\in \mathbb{R} ^2\), and choose a nearest even-parity site \(x_N\) to \(\sqrt {N/2}\,x\). Let \(X_N\) interpolate \(\sqrt {2/N}\,S_j\) at time \(j/N\), with \(S_0=x_N\). On \(\Gamma =C([0,1],\mathbb{R} ^2)\), define </p><div class="display-math" id="equation-eq:QN">
+\begin{equation} \mathsf{Q} _N^x(F)=\frac {E_{x_N}[F(X_N)\prod _{j=1}^NW_{j,S_j}]}{Z_{0,N}(x_N,1)}\,.\tag{1.3}\end{equation}
+</div><p>
+Write \(\mathsf{M} _N^x\) for the numerator measure in (<a href="#equation-eq:QN">1.3</a>). The terminal weight is \(1\): no terminal point is prescribed. All
+weak topologies below are those of finite measures or probability measures on the indicated Polish path
+space.
+</p><p class="indent">   Write \([u]=2\lceil u/2\rceil \). For \(m=[\delta N]\), omit disorder at times \(1,\ldots ,m\) in the numerator of (<a href="#equation-eq:QN">1.3</a>). Denote the resulting finite measure
+and its normalization by \(\widehat{\mathsf{M}} _{N,\delta }^x\) and \(\widehat{\mathsf{Q}} _{N,\delta }^x\). Its mass is \(Z_{m,N}(q_m^{(x_N)},1)\), where \(q_m^{(z)}(w)=q_m(w-z)\).
+</p><p class="indent">   Let \(\mathscr Z^\vartheta \) be the critical stochastic heat flow in the convention of <span class="cite">[<a href="#XKPZ">1</a>, Theorem A]</span>, with mean \(dx\,g_{t-s}(y-x)\,dy\), where
+</p><div class="display-math">
+\begin{equation*} g_t(z)=(2\pi t)^{-1}\exp (-|z|^2/(2t))\,. \end{equation*}
+</div><p> Let \(\mathsf{M} _{[\delta ,1]}\) be its existing all-start path measure <span class="cite">[<a href="#XCM">4</a>, Theorems 2.10 and 2.13]</span>, equivalently <span class="cite">[<a href="#XTsai">7</a>,
+Proposition 2.4]</span>. Weight it by \(g_\delta (X_\delta -x)\) and prepend a Brownian bridge from \(x\) to \(X_\delta \) of duration \(\delta \), integrated
+as a probability kernel. This defines \(\widehat{\mathsf{M}} _\delta ^x\) on \(\Gamma \). Set </p><div class="display-math" id="equation-eq:continuumQ">
+\begin{equation} W_\delta ^x=\widehat{\mathsf{M}} _\delta ^x(1)=\mathscr Z_{\delta ,1}^\vartheta (g_\delta (\cdot -x),1),\qquad \widehat{\mathsf{Q}} _\delta ^x=\widehat{\mathsf{M}} _\delta ^x/W_\delta ^x\,.\tag{1.4}\end{equation}
+</div><p> Section <a href="#the-fixedcutoff-path-limit">3</a> proves that this normalization is
+finite and strictly positive. All these measures are functions of one common stochastic heat
+flow.
+   </p><div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-2005r1"></a>
+<strong>Theorem 1.1.</strong> </span> <em>Under </em>(<a href="#equation-eq:tuning">1.1</a>)<em>, there is a stochastic-heat-flow-measurable random probability </em>\(\mathsf{Q} ^x\) <em>on </em>\(\Gamma \) <em>such
+that, almost surely, </em>\(\mathsf{Q} ^x\{X(0)=x\}=1\)<em>, and </em></p><div class="display-math" id="equation-eq:main">
+\begin{equation} \widehat{\mathsf{Q}} _\delta ^x\xrightarrow [\delta \downarrow 0]{\mathbb{P} }\mathsf{Q} ^x, \qquad \mathsf{Q} _N^x\xRightarrow [N\to \infty ]{\operatorname{Law} }\mathsf{Q} ^x\,.\tag{1.5}\end{equation}
+</div> <em>Both limits hold in the weak topology, jointly for any prescribed finite family of
+deterministic starting points, with the same environment and the same limiting stochastic heat flow for
+that family.</em>
+</div>
+<p class="indent">   The first convergence is on the continuum probability space. The second is convergence in
+distribution over the discrete environment; no coupling of all microscopic environments is asserted. The
+proof uses the exact literature results specified in Section <a href="#inputs-and-finitelattice-estimates">2</a>. It does not prescribe a terminal point,
+construct an uncountable spatially regular family, establish non-Gaussian universality, or identify
+arbitrary spatial shrinking-ball regularizations.
+</p>
+<h5 id="relation-to-existing-polymer-measures"><span class="titlemark">1.1   </span> <a id="x1-30001.1"></a>Relation to existing polymer measures</h5>
+<p class="noindent">Clark and Mian construct an infinite, unnormalized all-start measure on continuous paths <span class="cite">[<a href="#XCM">4</a>, Theorem
+2.13]</span>. Its finite endpoint-weighted restrictions can be normalized when their mass is finite and positive.
+Clark and Tsai establish the required positivity and explicitly define such probabilities <span class="cite">[<a href="#XCT">5</a>, Corollary 1.3
+and (1.8)]</span>. Thus it would be incorrect to describe all of those constructions as lacking normalized
+polymer probabilities. A deterministic positive starting density and a point mass at a prescribed point
+are different initial conditions. Disintegration of an all-start random measure specifies conditional laws
+only almost everywhere for its random starting marginal, and does not select a law at a prescribed
+deterministic \(x\).
+</p><p class="indent">   In the subcritical intermediate-disorder regime, Gabriel proves convergence of the normalized
+deterministic-start, free-endpoint polymer probability to Brownian motion <span class="cite">[<a href="#XGabriel">6</a>, Theorem 1.2]</span>. His
+strength is \(\beta _N=\widehat \beta /\sqrt {R_N}\) with \(0&lt;\widehat \beta &lt;1\), rather than (<a href="#equation-eq:tuning">1.1</a>). His spatial scale \(S/\sqrt N\) yields \(B/\sqrt 2\); our scale yields standard
+Brownian motion. The present theorem concerns the critical window and a random limiting
+probability.
+</p><p class="indent">   The initial scalar cancellation is already present in <span class="cite">[<a href="#XKPZ">1</a>, Proposition 4.4 and Section 7.5]</span>. The additional
+work needed here is control of arbitrary deterministic tail path observables, identification of the
+fixed-cutoff path law, and a cutoff-uniform estimate for the original discrete prefix. We make no priority
+claim for these deductions. The conditional Gaussian multiplicative chaos relation in <span class="cite">[<a href="#XCT">5</a>,
+Theorem 1.1]</span> concerns the existing all-start measures; no extension of that relation to \(\mathsf{Q} ^x\) is
+claimed.
+</p>
+<h5 id="coordinates-and-parameters"><span class="titlemark">1.2   </span> <a id="x1-40001.2"></a>Coordinates and parameters</h5>
+<p class="noindent">Let \(C^\vartheta \) denote the original flow of <span class="cite">[<a href="#XCSZ23">2</a>]</span> and \(D(z)=\sqrt 2z\). Changing both planar endpoint coordinates gives </p><div class="display-math" id="equation-eq:dictionary">
+\begin{equation} \mathscr Z_{s,t}^\vartheta =4(D\times D)_\#C_{s,t}^\vartheta \ \stackrel {\operatorname{Law} }=\ 2C_{2s,2t}^{\vartheta -\log 2}\,.\tag{1.6}\end{equation}
+</div><p> The
+second identity is <span class="cite">[<a href="#XCSZ23">2</a>, (1.12)]</span>; the first follows directly from the \(N/4\) kernel density in the two
+coordinate conventions. The published introduction of <span class="cite">[<a href="#XCM">4</a>]</span> uses \(2C_{2s,2t}^{\eta +\gamma _{\rm E}-\log 2}\). Hence its parameter, and Tsai’s
+parameter, are </p><div class="display-math" id="equation-eq:parameter">
+\begin{equation} \eta _{\rm CM}=\theta _{\rm Tsai}=\vartheta -\gamma _{\rm E}\,;\tag{1.7}\end{equation}
+</div><p> see also <span class="cite">[<a href="#XKPZ">1</a>, Remark 1.1]</span>. We use the marked-product construction of the
+deterministically transformed common flow in (<a href="#equation-eq:dictionary">1.6</a>). An equality in law is not used to couple
+different cutoffs independently. The parity cells have area \(v_N=4/N\), and the limiting Brownian generator
+is \(\Delta /2\).
+   </p><h4 id="inputs-and-finitelattice-estimates"><span class="titlemark">2   </span> <a id="x1-50002"></a>Inputs and finite-lattice estimates</h4>
+<p class="noindent">We state the imported estimates before using them. The point-start path limit is not among
+the inputs. The shape and buffer estimates proved in Appendix <a href="#discrete-shape-estimates-and-cancellation">A</a> give a common finite- \(N\)
+range; an estimate valid eventually for each fixed cutoff alone would not suffice near time
+zero.
+</p>
+<p class="noindent"><span class="paragraphHead" id="gaussian-inverse-moments"><a id="x1-6000"></a><strong>Gaussian inverse moments.</strong></span>
+   For a finite mean-one partition mass \(U\) with deterministic probability starting row and flat
+terminal weight, Gaussian convexity gives </p><div class="display-math" id="equation-eq:inverse">
+\begin{equation} \mathbb{E} U^{-p}\le (\mathbb{E} U^2)^{p(p+1)/2}\qquad (p\ge 0)\,.\tag{2.1}\end{equation}
+</div><p> This is <span class="cite">[<a href="#XKPZ">1</a>, Lemma 3.2, (3.5)]</span>, applied to the finite
+convex log-sum-exp \(\log U\). Its positive exponential moments are finite. It also holds conditionally on
+the physical past, with a past-measurable probability row held fixed and the independent
+future noise averaged. It is never applied under a future-dependent event as a new noise
+law.
+</p><p class="noindent"><span class="paragraphHead" id="critical-renewal"><a id="x1-7000"></a><strong>Critical renewal.</strong></span>
+   Put \(M_N(h)=\mathbb{E} Z_{0,h}(0,1)^2\) and \(\kappa _N(h)=\nu _N M_N(h)\). Uniformly for \(\vartheta _N\) in a fixed compact interval \(I\) and \(0\le h\le TN\), </p><div class="display-math" id="equation-eq:renewal">
+\begin{equation} \kappa _N(h)\le \frac {C_{I,T}}{\log (1+N/h)}\quad (h\ge 1),\qquad \sup _{h\le TN}\kappa _N(h)\le C_{I,T}\,.\tag{2.2}\end{equation}
+</div><p> We use <span class="cite">[<a href="#XKPZ">1</a>, (4.1), Claim B.1]</span>, not its
+Proposition 4.1. If \(\Theta _N(h)=\pi /\nu _N-\pi R_h&gt;0\), the same claim gives </p><div class="display-math" id="equation-eq:renewalerror">
+\begin{equation} 0\le \pi /\Theta _N(h)-\kappa _N(h)\le C\Theta _N(h)^{-2}\,.\tag{2.3}\end{equation}
+</div><p> In particular, choosing a sufficiently small fixed \(\epsilon &gt;0\) makes \(\Theta _N([\epsilon N])\)
+bounded above and below by positive constants, with the lower constant large enough to absorb the
+error. Monotonicity of \(M_N\) then yields </p><div class="display-math" id="equation-eq:renewallower">
+\begin{equation} \inf _{N/4\le h\le N}\kappa _N(h)\ge c_I&gt;0\,.\tag{2.4}\end{equation}
+</div><p> The upper estimate is uniform on \(I\) by monotonicity in \(\nu _N\); the scalar
+error estimate is uniform there. We also use the Gaussian walk bounds, local limit theorem,
+and \(R_h=\pi ^{-1}\log h+c+o(1)\).
+</p><p class="noindent"><span class="paragraphHead" id="fourth-moments"><a id="x1-8000"></a><strong>Fourth moments.</strong></span>
+   Theorem 1.11 and (1.28)–(1.33) of <span class="cite">[<a href="#XCSZ25">3</a>]</span>, in version 2, state the following specialization. Fix \(\widehat t,c_1,c_2,c_3&gt;0\). There
+are \(L_4,C_4\) such that, for any \(\beta \ge 0\), duration \(h\ge L_4\), and deterministic probability \(\phi \), if </p><div class="display-math" id="equation-eq:m4hyp">
+\begin{align} &amp;0&lt;D(\phi ):=\sum _z|z-m_\phi |^2\phi (z)&lt;\infty ,\qquad \left\|\phi \right\|_2^2\le c_2/D(\phi ),\nonumber \\ &amp;\sum _z\phi (z)e^{2\widehat t|z-z_0|/\sqrt h}\le c_1\ \text { for some }z_0, \qquad \operatorname{Var} Z_h^\beta (\phi ,1)\le c_3\,,\tag{2.5}\end{align}
+</div><p class="indent">   then \(\mathbb{E} |Z_h^\beta (\phi ,1)-1|^4\le C_4(\operatorname{Var} Z_h^\beta (\phi ,1))^2\). Here \(m_\phi =\sum _z z\phi (z)\). The end-included convention is <span class="cite">[<a href="#XCSZ25">3</a>, (1.17)–(1.18)]</span>. No retuning from \(\beta _N\) to a
+duration-dependent temperature is made. Appendix <a href="#discrete-shape-estimates-and-cancellation">A</a> verifies these hypotheses for long heat-started
+blocks and proves the short and point-started blocks directly.
+</p>
+<p class="noindent"><span class="paragraphHead" id="the-stochastic-heat-flow-and-its-path-measure"><a id="x1-9000"></a><strong>The stochastic heat flow and its path measure.</strong></span>
+   We retain <span class="cite">[<a href="#XCSZ23">2</a>, (1.11), Theorems 1.1 and 9.1, (3.51)–(3.56)]</span>: joint endpoint-flow convergence and its
+mixed second-moment limit. In the coordinates above the kernel density is \((N/4)Z_{[Ns],[Nt]}(x_N,y_N)\). The critical condition in <span class="cite">[<a href="#XCSZ23">2</a>,
+(1.11)]</span> is exactly (<a href="#equation-eq:tuning">1.1</a>), since for Gaussian disorder \(e^{\Lambda (2\beta )-2\Lambda (\beta )}-1=e^{\beta ^2}-1\). Thus \(\vartheta _N\to \vartheta \) is allowed. Finite lists of intervals, including
+overlapping intervals, converge to one flow. The limit has independent increments on disjoint time
+intervals and the heat-kernel mean. We retain the full self-adjoint, strongly continuous two-replica
+moment semigroup \(\mathcal Q_2(t)\) at (<a href="#equation-eq:parameter">1.7</a>) from <span class="cite">[<a href="#XTsai">7</a>, (1.2), (2.13), (2.16) and the following text]</span>. The centered
+formula (2.18) there is not this full operator.
+</p><p class="indent">   We use the continuous-path measure, its Wiener first moment and its measurable marked
+composition from <span class="cite">[<a href="#XCM">4</a>, Theorems 2.10, 2.13 and Proposition 2.14]</span> and <span class="cite">[<a href="#XTsai">7</a>, Definition 1.1 and
+Proposition 2.4]</span>. The latter permits all \(L^2\)-applicable approximate identities and makes the
+marked-product limit independent of that choice. This fact is needed to compare compactly
+supported connectors with the heat connectors in <span class="cite">[<a href="#XCM">4</a>]</span>. Section <a href="#the-fixedcutoff-path-limit">3</a> proves the necessary discrete
+path identification from these inputs; endpoint convergence is not itself a path-convergence
+theorem.
+</p>
+<h5 id="the-finitebuffer-output"><span class="titlemark">2.1   </span> <a id="x1-100002.1"></a>The finite-buffer output</h5>
+<p class="noindent">Fix \(0&lt;\alpha &lt;1\) and \(\rho _0&gt;24\). Appendix <a href="#discrete-shape-estimates-and-cancellation">A</a> constructs the signed heat-relative norm \(\left\|\cdot \right\|_{n,-\alpha }\) and proves the following
+consequence. There are constants \(C,N_*,J_0,L_0\), depending only on \(I,\alpha ,\rho _0\), with </p><div class="display-math" id="equation-eq:Lrange">
+\begin{equation} L_0\ge \max (2J_0\log \rho _0,2\log 8,4\log 3,e),\qquad L_0\le L=\log (1/\delta )\le \log N\,,\tag{2.6}\end{equation}
+</div><p> for which the estimates below hold for
+every even \(N\ge \max (N_*,16)\) and every starting site of the chosen parity. Put \(m=[\delta N]\), \(n=[\sqrt \delta N]\), and </p><div class="display-math" id="equation-eq:physicalrows">
+\begin{equation} \mu _n=\frac {Z_{0,n}(x_N,\cdot )}{Z_{0,n}(x_N,1)},\qquad \widehat \mu _n=\frac {q_m^{(x_N)}Z_{m,n}}{q_m^{(x_N)}Z_{m,n}1},\qquad \eta =\mu _n-\widehat \mu _n\,.\tag{2.7}\end{equation}
+</div><p> Let \(\mathscr F_n=\sigma (\omega _{j,z}:j\le n)\) and define the
+full-horizon response of a zero-mass row by </p><div class="display-math" id="equation-eq:response">
+\begin{equation} H(\eta )^2=\sum _{r=1}^{N-n}\kappa _N(N-n-r)\left\|\eta q_r\right\|_2^2 =\mathbb{E} [|\eta Z_{n,N}1|^2\mid \mathscr F_n]\,.\tag{2.8}\end{equation}
+</div><p> There is a concrete \(\mathscr F_n\)-measurable event \(\mathcal G\) such
+that, writing \(X=\mu _nZ_{n,N}1\) and \(Y=\widehat \mu _nZ_{n,N}1\), </p><div class="display-math" id="equation-eq:bufferout">
+\begin{equation} \mathbb{P} (\mathcal G^c)\le C/L,\quad \mathbb{E} [\mathbf{1}_{\mathcal G}H(\eta )]\le C/L,\quad \mathbb{E} [\mathbf{1}_{\mathcal G}(X^2+Y^2)]\le CL\,.\tag{2.9}\end{equation}
+</div><p> The proof in fact gives \(\mathbb{E} [\mathbf{1}_{\mathcal G}\left\|\eta \right\|_{n,-\alpha }]\le CL^{-3/2}\). We need only the weaker response bound
+in (<a href="#equation-eq:bufferout">2.9</a>).
+</p><p class="indent">   For completeness, the exact grid used in the appendix is chosen by </p><div class="display-math" id="equation-eq:exactgrid">
+\begin{equation} \begin {aligned} J&amp;=\left \lfloor \frac L{2\log \rho _0}\right \rfloor ,\qquad \varrho =e^{L/(2J)}\in [\rho _0,\rho _0^2],\\ K&amp;=\left \lfloor \frac {\log N}{\log \varrho }\right \rfloor +1,\qquad N_i=[N\varrho ^{i-K}]\quad (0&lt;i&lt;K)\,. \end {aligned}\tag{2.10}\end{equation}
+</div><p> Set \(N_0=0,N_K=N\). Then \(2J\le K-1\), \(N_{K-2J}=m\) and \(N_{K-J}=n\). The
+constants in the appendix are common over \(\varrho \in [\rho _0,\rho _0^2]\). The condition \(L\le \log N\) is part of the estimate, and must not be
+dropped.
+</p><p class="indent">   First collision, (<a href="#equation-eq:renewal">2.2</a>), and (<a href="#equation-eq:inverse">2.1</a>) also give </p><div class="display-math" id="equation-eq:massinverse">
+\begin{equation} \mathbb{E} Z_{0,N}(x_N,1)^{-1}\le C\log N,\qquad \mathbb{E} \widehat{\mathsf{M}} _{N,\delta }^x(1)^{-1}\le C(1+L)\,.\tag{2.11}\end{equation}
+</div><p> Indeed a heat-started second moment is \(1+\sum _{u=m+1}^Nq_{2u}(0)\kappa _N(N-u)\le C(1+\log (N/m))\). For \(B=q_m^{(x_N)}Z_{m,n}1\), the sharper
+small-horizon bound gives </p><div class="display-math" id="equation-eq:Binverse">
+\begin{equation} \mathbb{E} B^{-1}\le \mathbb{E} B^2\le 1+C\frac {\log (n/m)}{\log (1+N/n)}\le C\,.\tag{2.12}\end{equation}
+</div><p> All these bounds hold throughout (<a href="#equation-eq:Lrange">2.6</a>) after increasing the common
+threshold.
+   </p><h4 id="the-fixedcutoff-path-limit"><span class="titlemark">3   </span> <a id="x1-110003"></a>The fixed-cutoff path limit</h4>
+<p class="noindent">This section proves the path-space assertion needed at a fixed positive cutoff. Endpoint-flow
+convergence alone does not imply this assertion: the diagonal composition at an intermediate
+time is not continuous for vague convergence. We control that composition in the second
+moment.
+</p><p class="indent">   We retain the joint endpoint-flow convergence and mixed second-moment limits of <span class="cite">[<a href="#XCSZ23">2</a>, Theorems 1.1
+and 9.1, equations (3.51)–(3.56)]</span>, in the coordinates and critical window of <span class="cite">[<a href="#XKPZ">1</a>, Theorem A]</span>.
+The mixed limit is the full two-particle delta-Bose semigroup \(\mathcal Q_2^\theta (t)\), with \(\theta =\vartheta -\gamma _{\mathrm E}\). Its full, rather than
+centered, moment formula, boundedness, self-adjointness, and semigroup property are the
+inputs in <span class="cite">[<a href="#XTsai">7</a>, equations (1.2), (2.13), (2.16) and the text following (2.16)]</span>. In particular, its
+free two-particle heat term is included. All times in the discrete arguments below are even
+integers.
+</p>
+<h5 id="the-pair-transfer-and-its-uniform-bound"><span class="titlemark">3.1   </span> <a id="x1-120003.1"></a>The pair transfer and its uniform bound</h5>
+<p class="noindent">For this subsection work first on \(\ell ^2(\mathbb Z^2\times \mathbb Z^2)\) with counting measure. Let \(P_1\) be the one-step walk operator, put \(P=P_1\otimes P_1\), and
+let \(D\) be multiplication by \(\mathbf 1_{\{z_1=z_2\}}\). Write </p><div class="display-math" id="equation-fc:transfer">
+\begin{equation} V_N=I+\nu _ND,\qquad A_N=PV_N,\qquad S_N=V_N^{1/2}PV_N^{1/2}.\tag{3.1}\end{equation}
+</div><p> The matrix of \(A_N^m\) is the expectation of the product of two polymer kernels
+of duration \(m\). Indeed, at each step the two walks first move; the expectation of their two new weights is \(1+\nu _N\) if
+they meet and is \(1\) otherwise. This proves the assertion by conditioning successively on the
+steps. The convention excludes the initial noise and includes the terminal noise. Moreover,
+</p><div class="display-math" id="equation-fc:conjugation">
+\begin{equation} A_N^m=V_N^{-1/2}S_N^mV_N^{1/2}.\tag{3.2}\end{equation}
+</div><div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-12003r1"></a>
+<strong>Lemma 3.1.</strong> </span> <em>There is </em>\(c&lt;\infty \) <em>such that, for all sufficiently large </em>\(N\) <em>and every </em>\(m\geq 0\)<em>, </em></p><div class="display-math" id="equation-fc:power-bound">
+\begin{equation} \|S_N^m\|_{2\to 2}\leq e^{cm/N},\qquad \|A_N^m-S_N^m\|_{2\to 2}\leq C\nu _N e^{cm/N}.\tag{3.3}\end{equation}
+</div> <em>The constants can be chosen
+uniformly when the critical parameters belong to a fixed compact interval.</em>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>The planar return estimates give \(R_N=\pi ^{-1}\log N+O(1)\) and \(q_{2j}(0)\leq (\pi j)^{-1}\). Hence, for a sufficiently large fixed \(c\), with \(a=e^{-c/N}\), </p><div class="display-math" id="equation-fc:screening">
+\begin{equation} \nu _N^{-1}-\sum _{j\geq 1}a^jq_{2j}(0)\geq 2.\tag{3.4}\end{equation}
+</div> To see the
+uniformity, critical tuning gives \(\nu _N^{-1}=\pi ^{-1}\log N+O(1)\) uniformly on that compact interval, whereas the sum is at most
+\(-\pi ^{-1}\log (1-e^{-c/N}) =\pi ^{-1}(\log N-\log c)+o(1)\).
+<p class="indent">   Put \(\lambda =a^{-1}&gt;1\). On the collision subspace the kernel of \(DP^jD\) is \(q_j(y-x)^2\). Its row sum is \(q_{2j}(0)\), so the resolvent series and the Schur
+bound imply </p><div class="display-math" id="equation-fc:resolvent">
+\begin{equation} \|D(\lambda -P)^{-1}D\| \leq \lambda ^{-1}\sum _{j\geq 0}a^jq_{2j}(0).\tag{3.5}\end{equation}
+</div> Since \(\lambda -P\) is strictly positive, the elementary quadratic-form bound for a positive perturbation
+now gives <div class="display-math" id="equation-fc:positive-form">
+\begin{equation} (\lambda -P)-\frac {\lambda \nu _N}{1+\nu _N}D\geq 0.\tag{3.6}\end{equation}
+</div> For completeness, this bound follows by writing \(D=(\lambda -P)^{1/2}B^*B(\lambda -P)^{1/2}\) with \(B=D(\lambda -P)^{-1/2}\); the required inequality is \(\lambda \nu _N\|BB^*\|/(1+\nu _N)\leq 1\). It holds by
+(<a href="#equation-fc:resolvent">3.5</a>) and (<a href="#equation-fc:screening">3.4</a>). Conjugating (<a href="#equation-fc:positive-form">3.6</a>) by \(V_N^{1/2}\) shows \(S_N\leq \lambda I\).
+<p class="indent">   This also controls the negative spectral edge. The matrix entries of \(S_N\) are nonnegative, whence, for every
+complex \(u\), \(|\langle u,S_Nu\rangle | \leq \langle |u|,S_N|u|\rangle \leq \lambda \|u\|_2^2\). Self-adjointness therefore gives \(\|S_N\|\leq \lambda \). The first bound follows by taking powers. The second follows
+from (<a href="#equation-fc:conjugation">3.2</a>) and \(\|V_N^{1/2}-I\|+\|V_N^{-1/2}-I\|\leq C\nu _N\). <span aria-label="End of proof" class="qed">□</span>
+</p>
+</div>
+<p class="indent">   Let \(E=\{z\in \mathbb Z^2:z_1+z_2\text { is even}\}\) and \(v_N=4/N\). Use the parity cells in the definition of the rescaled endpoint flow, and let \(J_N:\ell ^2(E,v_N)\longrightarrow L^2(\mathbb R^2)\) extend a
+function as a constant on each cell. Then \(J_N\) is an isometry, \(J_N^*\) takes cell averages, \(J_N^*J_N=I\), and \(J_NJ_N^*\longrightarrow I\) strongly. The last
+assertion follows first for continuous compact functions, whose cell averages converge in \(L^2\), and then by
+density. Use \(\mathcal J_N=J_N\otimes J_N\) on the pair space; its cell volume is \(v_N^2\). Even powers in (<a href="#equation-fc:transfer">3.1</a>) preserve \(E\times E\), and the bounds
+above hold for their restrictions to this space. Intermediate odd times remain in the operator
+powers.
+</p>
+<h5 id="from-weak-mixed-moments-to-strong-pair-convergence"><span class="titlemark">3.2   </span> <a id="x1-130003.2"></a>From weak mixed moments to strong pair convergence</h5>
+<div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-13001r2"></a>
+<strong>Lemma 3.2.</strong> </span> <em>For every even sequence </em>\(m_N\) <em>with </em>\(m_N/N\longrightarrow t&gt;0\)<em>, </em></p><div class="display-math" id="equation-fc:strong-limit">
+\begin{equation} \mathcal J_N A_N^{m_N}\mathcal J_N^* \longrightarrow \mathcal Q_2^\theta (t) \quad \hbox {strongly on }L^2(\mathbb R^4).\tag{3.7}\end{equation}
+</div>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>The cited mixed second-moment formula identifies the weak limit on compact tensor tests. Here is
+the mixed-test point that is sometimes hidden when the source is stated for a variance. Subtract the free
+product of means. In the exact first/last-collision representation of the interaction covariance, the replicas
+share their first contact site and their last contact site. Its form \(\mathcal C_N(a_1,a_2;b_1,b_2)\) is thus symmetric and bilinear
+separately in the incoming pair and the outgoing pair. Consequently, </p><div class="display-math" id="equation-fc:polarization">
+\begin{equation} \mathcal C_N(a_1,a_2;b_1,b_2) =\frac 1{16}\sum _{\epsilon ,\eta \in \{-1,1\}}\epsilon \eta \, \operatorname {Var} Z_N(a_1+\epsilon a_2,b_1+\eta b_2).\tag{3.8}\end{equation}
+</div> This is polarization of the
+interaction form, rather than an asserted separate symmetry of the full second moment. The free term is
+added back. Equivalently, one can insert the four tests directly in the positive renewal formula of <span class="cite">[<a href="#XCSZ23">2</a>,
+equations (3.51)–(3.56)]</span>; Cauchy–Schwarz against that renewal measure controls the mixed errors by the
+corresponding square-test errors. This establishes weak convergence on a dense set of \(L^2\) tensor
+tests.
+<p class="indent">   This also covers the moving critical parameter \(\vartheta _N\to \vartheta \). Indeed, for nonnegative compact tensor tests the
+exact two-walk expectation is increasing in \(\nu _N\), by its nonnegative collision expansion. Eventually its value
+for \(\vartheta _N\) is between its values for the two fixed parameters \(\vartheta -\epsilon \) and \(\vartheta +\epsilon \). The limiting two-particle form is continuous
+in the parameter: in its positive renewal formula this follows by dominated convergence on a compact
+parameter interval; equivalently, use the Gamma integral for the interaction kernel in <span class="cite">[<a href="#XTsai">7</a>, equation
+(2.4)]</span>. First take \(N\to \infty \) and then \(\epsilon \downarrow 0\). Decomposition into positive and negative parts gives signed
+compact tests. This argument applies at both \(t\) and \(2t\) and requires no moving-parameter operator
+theorem.
+</p><p class="indent">   There is no difficulty from changing an excluded final layer to an included final layer. Indeed, for cell
+averages (or source evaluations) \(f_N,g_N\) of fixed compact continuous tests \(f,g\), the squared \(L^2\) error of that change is </p><div class="display-math" id="equation-fc:terminal-layer">
+\begin{equation} \nu _N\langle f_N^{\otimes 2}, A_N^{m-1}P d_N\rangle _{\ell ^2(E\times E,v_N^2)},\qquad d_N(z_1,z_2)=\mathbf 1_{\{z_1=z_2\}}g_N(z_1)^2.\tag{3.9}\end{equation}
+</div>
+This is the conditional variance of the centered last layer; the preceding noise is independent of that
+layer. Since \(\|d_N\|_2^2=v_N^2\sum _z|g_N(z)|^4=O(v_N)\), Lemma <a href="#x1-12003r1">3.1</a> bounds (<a href="#equation-fc:terminal-layer">3.9</a>) by \(C\nu _Nv_N^{1/2}\|f_N\|_2^2\longrightarrow 0\). The same pair bound controls the unmodified tested masses
+in \(L^2\), so it also transfers the mixed moments. Cell averages can replace source evaluations by \(L^2\)
+approximation and this uniform bound.
+<p class="indent">   Initially take the source’s fixed rounded times. By (<a href="#equation-fc:power-bound">3.3</a>), the operators \(T_N(t)=\mathcal J_NS_N^{m_N}\mathcal J_N^*\) are uniformly bounded.
+The weak convergence on dense tests extends to all \(L^2\) tests. For a fixed \(u\in L^2(\mathbb R^4)\) the isometry gives
+</p><div class="display-math" id="equation-fc:norm-identity">
+\begin{align} \|T_N(t)u\|_2^2 &amp;=\langle u,\mathcal J_NS_N^{2m_N}\mathcal J_N^*u\rangle \longrightarrow \langle u,\mathcal Q_2^\theta (2t)u\rangle =\|\mathcal Q_2^\theta (t)u\|_2^2.\tag{3.10}\end{align}
+</div>
+<p class="indent">   The weak moment limit at \(2t\) uses the same \(N\)-indexed disorder and the same critical parameter; it does
+not retune the variance at horizon \(2N\). Weak convergence and (<a href="#equation-fc:norm-identity">3.10</a>) give strong convergence.
+Equation (<a href="#equation-fc:power-bound">3.3</a>) transfers it to \(A_N\).
+</p><p class="indent">   Finally the even rounding can vary with \(N\). For even positive \(m,n\) in \([t_0N,TN]\), spectral calculus gives </p><div class="display-math" id="equation-fc:time-shift">
+\begin{equation} \|S_N^m-S_N^n\|\leq C_{c,t_0,T}\frac {|m-n|}{N}.\tag{3.11}\end{equation}
+</div> In fact, even
+powers remove the sign of a spectral value. On \(0&lt;r\leq 1\), \(r^{t_0N}|\log r|\leq (e t_0N)^{-1}\); on \(1\leq r\leq e^{c/N}\) use \(r^{TN}\log r\leq e^{cT}c/N\). The mean-value bound in the exponent proves
+(<a href="#equation-fc:time-shift">3.11</a>). An \(o(N)\) change in the rounded times therefore costs \(o(1)\) in operator norm. This proves the assertion for
+every stated sequence. <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<h5 id="marked-cylinders-and-the-interface-approximation"><span class="titlemark">3.3   </span> <a id="x1-140003.3"></a>Marked cylinders and the interface approximation</h5>
+<p class="noindent">Fix a finite grid \(t_0&lt;\cdots &lt;t_d\) with positive spacings. Let \(K_{i,N}\) be the actual random polymer transfer on its \(i\)th slab.
+Choose \(f_0,\ldots ,f_d\in C_c(\mathbb R^2)\) and put \(f_{i,N}=J_N^*f_i\). Start with nonnegative functions. The raw marked scalar is </p><div class="display-math" id="equation-fc:raw-cylinder">
+\begin{equation} C_N=\langle f_{0,N},K_{1,N}M_{f_{1,N}}K_{2,N}\cdots M_{f_{d-1,N}}K_{d,N}f_{d,N}\rangle _{\ell ^2(E,v_N)}.\tag{3.12}\end{equation}
+</div><p> Choose an even,
+nonnegative, smooth compactly supported probability mollifier \(u_\ell \), with its scale tending to zero. Let \(U_\ell \) be
+convolution by \(u_\ell \) and let \(U_{\ell ,N}=J_N^*U_\ell J_N\). The continuum operators are contractions and converge strongly to the identity
+as \(\ell \to \infty \). For fixed \(\ell \), their discretizations converge strongly to \(U_\ell \) after embedding as \(N\to \infty \). Define \(C_{N,\ell }\) by inserting \(U_{\ell ,N}\) after
+every internal multiplication in (<a href="#equation-fc:raw-cylinder">3.12</a>).
+   </p><div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-14002r3"></a>
+<strong>Lemma 3.3.</strong> </span> <em>For the preceding compact marked cylinders, </em></p><div class="display-math" id="equation-fc:interface-error">
+\begin{equation} \lim _{\ell \to \infty }\limsup _{N\to \infty } \mathbb E|C_N-C_{N,\ell }|^2=0.\tag{3.13}\end{equation}
+</div> <em>For each fixed </em>\(\ell \)<em>, the joint endpoint-flow limit
+identifies </em>\(C_{N,\ell }\) <em>with the corresponding smoothed marked SHF product. As </em>\(\ell \to \infty \)<em>, that product converges in </em>\(L^2\) <em>to the
+cylinder integral of the associated continuum polymer measure.</em>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>Independence of the slabs within this grid gives exact second-moment identities. The three terms \(\mathbb E C_N^2\),
+\(\mathbb E(C_NC_{N,\ell })\), and \(\mathbb E C_{N,\ell }^2\) are complete products of the pair transfers. At interface \(i\) their respective insertions, in order, are </p><div class="display-math" id="equation-fc:three-insertions">
+\begin{equation} (M_{f_{i,N}}\otimes M_{f_{i,N}}),\qquad (M_{f_{i,N}}\otimes M_{f_{i,N}})(I\otimes U_{\ell ,N}),\qquad (M_{f_{i,N}}\otimes M_{f_{i,N}}) (U_{\ell ,N}\otimes U_{\ell ,N}).\tag{3.14}\end{equation}
+</div>
+They have roots \(f_{0,N}^{\otimes 2},f_{d,N}^{\otimes 2}\) and between insertions the pair transfer \(A_N^{m_{i,N}}\). These formulas follow by expanding the two
+finite walk sums and averaging each independent slab. Swapping both replicas shows \(\mathbb E(C_NC_{N,\ell })=\mathbb E(C_{N,\ell }C_N)\). For
+one interface the square-error formula is, for example, <div class="display-math" id="equation-fc:one-interface">
+\begin{equation} \mathbb E|C_N-C_{N,\ell }|^2 =\langle f_{0,N}^{\otimes 2},A_N^{m_{1,N}} (M_{f_{1,N}}\otimes M_{f_{1,N}}) ((I-U_{\ell ,N})\otimes (I-U_{\ell ,N})) A_N^{m_{2,N}}f_{2,N}^{\otimes 2}\rangle .\tag{3.15}\end{equation}
+</div> For several interfaces use the three
+complete products (<a href="#equation-fc:three-insertions">3.14</a>); a product of separate one-interface errors is not the square-error
+identity.
+<p class="indent">   For fixed \(\ell \), Lemma <a href="#x1-13001r2">3.2</a>, the strong convergence of the cell-average multiplication and convolution
+operators, and their uniform bounds pass each complete product to its continuum counterpart. Products
+preserve strong convergence under uniform bounds, as follows by telescoping a finite product on a fixed
+vector. Sending \(\ell \to \infty \) then makes the three limiting products identical. Their combination with coefficients \(1,-2,1\)
+proves (<a href="#equation-fc:interface-error">3.13</a>).
+</p><p class="indent">   At fixed \(\ell \) the endpoint-measure functional is continuous for vague convergence after the stated
+compact restrictions. More explicitly, the connector density between cells is </p><div class="display-math" id="equation-fc:connector-density">
+\begin{equation} \frac 1{v_N^2}\int _{C_N(z)}\int _{C_N(z')} u_\ell (y-y')\,dy\,dy',\tag{3.16}\end{equation}
+</div> which converges locally
+uniformly to \(u_\ell \). Every hidden coordinate is in a fixed compact set: each left interface coordinate is in the
+support of its compact mark, its right partner is within the fixed support radius of the connector, and the
+two outer coordinates are in the supports of \(f_0,f_d\). Thus the tested product has compact support
+on the full product space. Tensor products of finitely many locally finite positive measures
+converge against continuous compact tests under vague convergence. This proves the asserted
+endpoint-flow identification; no unproved global continuity of an untruncated composition is
+used.
+<p class="indent">   The last assertion is precisely the marked-product limit of <span class="cite">[<a href="#XTsai">7</a>, Definition 1.1, Proposition 2.4, equations
+(2.30)–(2.33)]</span>. Our compact probability mollifiers are \(L^2\)-applicable: Young’s inequality makes their
+convolution operators contractions and approximation of the identity gives strong convergence.
+Heat-kernel mollifiers are also \(L^2\)-applicable. The proposition makes the marked limit independent of that
+choice. It therefore identifies the compact mollifier construction with the heat-regularized marked
+construction of <span class="cite">[<a href="#XCM">4</a>, Theorem 2.13]</span>, on the same endpoint-flow realization. This is the required
+compact/heat interface identification. In particular, no assertion that every \(L^2\) convolution kernel acts
+boundedly on \(L^2\) is needed. Signed marks follow by finite linear combinations of nonnegative
+ones. <span aria-label="End of proof" class="qed">□</span>
+</p>
+</div>
+<p class="indent">   The argument also proves joint convergence of finitely many marked integrals together with any
+prescribed finite family of endpoint kernels. For fixed smoothing all these integrals are functions of the
+finite union of their endpoint arrays. Their individual \(L^2\) approximation errors control the error of the
+vector by a finite sum. Intervals belonging to different grids or cutoffs may overlap; they are never
+declared independent. Independence was used only within each disjoint grid when proving its individual
+moment identity.
+</p>
+<h5 id="the-heat-root-the-brownian-prefix-and-normalization"><span class="titlemark">3.4   </span> <a id="x1-150003.4"></a>The heat root, the Brownian prefix, and normalization</h5>
+<p class="noindent">Fix \(\delta \in (0,1)\) and a deterministic \(x\in \mathbb R^2\). Let \(m=[\delta N]\) be the even ceiling and let \(x_N\in E\) be the chosen approximation to \(\sqrt {N/2}\,x\). Erasing the
+weights through time \(m\) gives the exact incoming probability row \(q_m(\cdot -x_N)\). Its density in the preceding
+Hilbert-space convention is </p><div class="display-math" id="equation-fc:heat-root">
+\begin{equation} r_{N,\delta }(z)=q_m(z-x_N)/v_N,\qquad J_Nr_{N,\delta }\longrightarrow g_\delta (\cdot -x) \quad \hbox {in }L^1\cap L^2.\tag{3.17}\end{equation}
+</div><p> This is the parity local central limit theorem. In particular, the root has
+bounded \(L^2\) norm for each fixed \(\delta \).
+</p><p class="indent">   Denote the erased random finite path measure by </p><div class="display-math" id="equation-fc:erased-measure">
+\begin{equation} \widehat{\mathsf{M}} _{N,\delta }^x(F) =E_{x_N}\left [F(X_N)\prod _{j=m+1}^NW_{j,S_j}\right ].\tag{3.18}\end{equation}
+</div><p> Let \(\widehat{\mathsf{M}} _\delta ^x\) be the continuum polymer measure on \([\delta ,1]\),
+weighted at its starting position by \(g_\delta (\cdot -x)\), with the conditional Brownian bridge from \(x\) to that
+position attached on \([0,\delta ]\). This definition uses the measurable continuous-path construction of <span class="cite">[<a href="#XCM">4</a>,
+Theorems 2.10, 2.13 and Proposition 2.14]</span>, with the normalization and parameter dictionary
+stated above. Its first moment is the Wiener law \(P_x^{\rm BM}\), because the unweighted continuum measure
+has Lebesgue-start Wiener first moment and Brownian disintegration at time \(\delta \) has density
+\(g_\delta \).
+   </p><div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-15003r4"></a>
+<strong>Proposition 3.4.</strong> </span> <em>Jointly for any finite prescribed family of cutoffs and deterministic starting points, </em></p><div class="display-math" id="equation-fc:fixed-cutoff-limit">
+\begin{equation} \widehat{\mathsf{M}} _{N,\delta }^x\ \Longrightarrow \ \widehat{\mathsf{M}} _\delta ^x \quad \hbox {in the weak topology of finite path measures},\qquad \widehat{\mathsf{Q}} _{N,\delta }^x\ \Longrightarrow \ \widehat{\mathsf{Q}} _\delta ^x,\tag{3.19}\end{equation}
+</div>
+<em>where each </em>\(\widehat{\mathsf{Q}} \) <em>is the corresponding measure divided by its total mass. The convergence holds jointly with
+every prescribed finite family of endpoint kernels, using a single limiting SHF for all the cutoffs and
+starting points.</em>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>First truncate the heat root and the terminal weight \(1\) continuously on compact sets. For
+these truncations, (<a href="#equation-fc:heat-root">3.17</a>) and the uniform pair bound allow \(L^2\) approximation by compact continuous
+roots in the marked-cylinder lemma. Removing the root truncation and terminal truncation costs
+an \(L^1\) error bounded by the corresponding ordinary walk, or Brownian, tail: the measures are positive
+and their annealed first moments are the ordinary walk and Wiener laws. Thus all bounded compact
+marked cylinders after \(\delta \) converge jointly as asserted.
+</p><p class="indent">   Marks at or before \(\delta \) are absorbed into the deterministic incoming row. For a finite product of
+bounded continuous such marks this row is bounded in absolute value by a constant times \(q_m(\cdot -x_N)\). The
+deterministic local central limit theorem and the Markov property give its limiting heat row with
+the appropriate Brownian-bridge conditional expectation. The domination by the heat row, with
+standard Gaussian walk bounds at fixed positive duration, gives the needed \(L^1\) and \(L^2\) convergence.
+This proves cylinder convergence on the whole interval \([0,1]\).
+</p><p class="indent">   Actual interpolation times may replace their even ceilings. They differ by at most two walk
+steps, so the spatial discrepancy at each of a fixed finite list of times is deterministically \(O(N^{-1/2})\). Uniform
+continuity on compact sets, followed by the annealed tail bound, removes this discrepancy and the
+replacement of cell averages by point evaluations. No prior polymer time modulus is used here.
+</p><p class="indent">   For tightness, the annealed measure in (<a href="#equation-fc:erased-measure">3.18</a>) is exactly the scaled walk law. Therefore, for
+every compact path set \(K\) and every \(\epsilon &gt;0\), </p><div class="display-math" id="equation-fc:annealed-tightness">
+\begin{equation} \mathbb P\{\widehat{\mathsf{M}} _{N,\delta }^x(K^c)&gt;\epsilon \} \leq \epsilon ^{-1}P_{x_N}\{X_N\notin K\},\qquad \mathbb E\widehat{\mathsf{M}} _{N,\delta }^x(1)=1.\tag{3.20}\end{equation}
+</div> Donsker tightness, a sequence of compact sets with
+summably small right-hand sides, and Markov’s inequality prove tightness of the laws of
+these random finite measures. Finite products of these arguments give joint tightness. Joint
+cylinder integrals at rational times, including the total mass, identify every subsequential limit;
+continuous paths and a countable determining class make this identification an identification of
+random-measure laws. The preceding joint endpoint-array argument proves the final joint assertion
+too.
+<p class="indent">   Finally </p><div class="display-math" id="equation-fc:positive-mass">
+\begin{equation} W_\delta ^x=\widehat{\mathsf{M}} _\delta ^x(1) =\mathscr Z_{\delta ,1}^\vartheta (g_\delta (\cdot -x),1) \quad \hbox {satisfies}\quad 0&lt;W_\delta ^x&lt;\infty \quad \hbox {a.s.}\tag{3.21}\end{equation}
+</div> Finiteness follows from its mean \(1\). For positivity choose a nonzero nonnegative compact
+product test below \(g_\delta (\cdot -x)\otimes 1\) and apply <span class="cite">[<a href="#XCT">5</a>, Corollary 1.3]</span>; that test has positive Wiener integral. The
+normalization map \(\mu \mapsto \mu /\mu (1)\) is continuous in the weak finite-measure topology at positive total mass. The
+continuous mapping theorem proves the probability-measure assertion. <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<p class="indent">   The preceding result retains the existing SHF convergence theorem and the existing unpinned
+continuum path measure. Its additional content is the discrete marked-interface argument. It does not
+remove the cutoff or supply an initial-time modulus for the original point-start polymer; those are
+separate steps.
+</p>
+<h4 id="cancellation-for-tail-paths"><span class="titlemark">4   </span> <a id="x1-160004"></a>Cancellation for tail paths</h4>
+<p class="noindent">A deterministic observable of \((S_k,\ldots ,S_N)\) permits a first-noise expansion through time \(k\). Expanding beyond \(k\) would
+retain an unrecorded path prefix in the observable. Keeping the original response horizon \(N\) also makes the
+smoothing constant uniform in \(k\).
+</p>
+<div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-16001r1"></a>
+<strong>Proposition 4.1.</strong> </span> <em>Under </em>(<a href="#equation-eq:Lrange">2.6</a>)<em>, for every integer </em>\(\max (16,4n)\le k\le N\) <em>and every deterministic </em>\(F=F(S_k,\ldots ,S_N)\) <em>with </em>\(|F|\le 1\)<em>, </em></p><div class="display-math" id="equation-eq:tailcompare">
+\begin{equation} \mathbb{E} |\mathsf{Q} _N^x(F)-\widehat{\mathsf{Q}} _{N,\delta }^x(F)|\le C\rho (L),\qquad \rho (L)=L^{-1/12}(\log L)^{1/6}+L^{-1}\,.\tag{4.1}\end{equation}
+</div> <em>The constant is
+independent of </em>\(k,x,N,\delta \) <em>in this range. The supremum over deterministic tests can be taken outside the
+expectation.</em>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>For the past-measurable row \(\eta \) in (<a href="#equation-eq:physicalrows">2.7</a>), expand \(W=1+\xi \) only through \(k\) and group by the first selected
+noise: </p><div class="display-math" id="equation-eq:firstpath">
+\begin{align} Z_{n,N}(\eta ;F)&amp;=A_F+B_F,\nonumber \\ A_F&amp;=\sum _{r=1}^{k-n}\sum _z(\eta q_r)(z)\xi _{n+r,z}Z_{n+r,N}(z;F),\qquad B_F=Z_{k,N}(\eta q_{k-n};F)\,.\tag{4.2}\end{align}
+</div>
+<p class="indent">   The suffix at \(n+r=k\) excludes noise at \(k\), so no layer is counted twice. The observable has no dependence on
+the path before \(k\), which justifies the heat prefix in each term.
+</p><p class="indent">   Conditionally on \(\mathscr F_n\), summands with different first-noise times are orthogonal: integrate the centered
+noise at the earlier time. Different sites at the same time are also orthogonal, and all suffixes use strictly
+later noise. Since \(|Z_{u,N}(z;F)|\le Z_{u,N}(z,1)\), </p><div class="display-math" id="equation-eq:pathresponse">
+\begin{equation} \mathbb{E} [|A_F|^2\mid \mathscr F_n]\le H(\eta )^2,\qquad \mathbb{E} [|B_F|\mid \mathscr F_n]\le \left\|\eta q_{k-n}\right\|_1\,.\tag{4.3}\end{equation}
+</div> For integers \(k/4\le r\le k/2\), the hypotheses imply \(r\le k-n\) and \(N-n-r\ge N/4\). The \(\ell ^2\) contraction of convolution
+and (<a href="#equation-eq:renewallower">2.4</a>) give <div class="display-math" id="equation-eq:pathsmoothing">
+\begin{equation} H(\eta )^2\ge ck\left\|\eta q_{k-n}\right\|_2^2\,.\tag{4.4}\end{equation}
+</div> There are at least \(k/8\) such integers. In a ball \(D_R=\{|z-x_N|\le R\sqrt k\}\), Cauchy–Schwarz therefore bounds the \(\ell ^1\)
+difference by \(CRH(\eta )\).
+<p class="indent">   Put \(p=\mu _n q_{k-n}\) and \(\widehat p=\widehat \mu _nq_{k-n}\). Equal total mass yields </p><div class="display-math">
+\begin{equation*} \left\|p-\widehat p\right\|_1\le 2\sum _{D_R}|p-\widehat p|+2\widehat p(D_R^c)\,. \end{equation*}
+</div> If \(C_R=q_m^{(x_N)}Z_{m,n}(q_{k-n}\mathbf{1}_{D_R^c})\), then \(0\le C_R\le B\), \(\widehat p(D_R^c)=C_R/B\) and \(\mathbb{E} C_R=q_k^{(x_N)}(D_R^c)\le Ce^{-cR^2}\). Using (<a href="#equation-eq:Binverse">2.12</a>), <div class="display-math">
+\begin{equation*} \mathbb{E} \widehat p(D_R^c)\le (\mathbb{E} C_R\,\mathbb{E} B^{-1})^{1/2}\le Ce^{-cR^2}\,. \end{equation*}
+</div> This follows from \(C_R/B^2\le B^{-1}\) and
+Cauchy–Schwarz; independence is not needed. Combining with (<a href="#equation-eq:bufferout">2.9</a>) and (<a href="#equation-eq:pathresponse">4.3</a>), and choosing \(R=A\sqrt {\log L}\), gives
+<div class="display-math" id="equation-eq:numeratortail">
+\begin{equation} \mathbb{E} [\mathbf{1}_{\mathcal G}|Z_{n,N}(\eta ;F)|]\le CL^{-1}\sqrt {\log L}\,.\tag{4.5}\end{equation}
+</div>
+<p class="indent">   Let \(X_F=Z_{n,N}(\mu _n;F)\) and \(Y_F=Z_{n,N}(\widehat \mu _n;F)\). The Markov property gives \(\mathsf{Q} _N^x(F)=X_F/X\) and \(\widehat{\mathsf{Q}} _{N,\delta }^x(F)=Y_F/Y\). Positivity gives \(|X_F|\le X\), \(|Y_F|\le Y\). For \(D_F=|X_F-Y_F|+|X-Y|\), </p><div class="display-math" id="equation-eq:ratio">
+\begin{equation} |X_F/X-Y_F/Y|\le \min (2,D_F/X)\le 2^{2/3}D_F^{1/3}X^{-1/3}\,.\tag{4.6}\end{equation}
+</div> Condition on \(\mathscr F_n\) in (<a href="#equation-eq:inverse">2.1</a>)
+with \(p=1/2\). Since \(\mathcal G\) is measurable there, concavity and (<a href="#equation-eq:bufferout">2.9</a>) give <div class="display-math" id="equation-eq:conditionalinverse">
+\begin{equation} \mathbb{E} [\mathbf{1}_{\mathcal G}X^{-1/2}]\le \mathbb{E} [\mathbf{1}_{\mathcal G}(\mathbb{E} [X^2\mid \mathscr F_n])^{3/8}] \le (\mathbb{E} [\mathbf{1}_{\mathcal G}X^2])^{3/8}\le (CL)^{3/8}\,.\tag{4.7}\end{equation}
+</div> Apply (<a href="#equation-eq:numeratortail">4.5</a>) to \(F\) and to \(1\), then use Hölder
+in (<a href="#equation-eq:ratio">4.6</a>). The good-event contribution is at most <div class="display-math">
+\begin{equation*} C(L^{-1}\sqrt {\log L})^{1/3}(L^{3/8})^{2/3} =CL^{-1/12}(\log L)^{1/6}\,. \end{equation*}
+</div> The complement contributes at most \(2\mathbb{P} (\mathcal G^c)\le C/L\). This proves the
+proposition. <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<p class="indent">   This is not an expected total-variation bound: the supremum has not been moved inside \(\mathbb{E} \). For a
+functional of the interpolated path on \([a,1]\), take \(k=\lfloor aN\rfloor \), which retains the segment crossing \(a\). If \(\sqrt \delta \le a/8\) and \(L\ge L_0\), all
+hypotheses hold for \(N\ge \max (N_*,16,e^L,40/a)\).
+</p>
+<h4 id="removing-the-continuum-cutoff"><span class="titlemark">5   </span> <a id="x1-170005"></a>Removing the continuum cutoff</h4>
+<p class="noindent">We first compare cutoffs on each fixed positive-time interval. Their joint identification from Section <a href="#the-fixedcutoff-path-limit">3</a> is
+essential: a comparison of unrelated marginal laws would not construct a random measure on the given
+flow space.
+</p><p class="indent">   Fix \(a&gt;0\). Two applications of Proposition <a href="#x1-16001r1">4.1</a> through the same \(\mathsf{Q} _N^x\), followed by the joint fixed-cutoff limit,
+give </p><div class="display-math" id="equation-eq:paircutoff">
+\begin{equation} \mathbb{E} |\widehat{\mathsf{Q}} _\delta ^xF-\widehat{\mathsf{Q}} _\epsilon ^xF| \le C\{\rho (|\log \delta |)+\rho (|\log \epsilon |)\}\tag{5.1}\end{equation}
+</div><p> for every deterministic \(F\in C_b(C([a,1],\mathbb{R} ^2))\), \(|F|\le 1\), when both logarithms are at least \(L_0\) and \(\sqrt \delta ,\sqrt \epsilon \le a/8\). For this fixed pair, first take \(N\ge \max (N_*,16,\delta ^{-1},\epsilon ^{-1},40/a)\)
+and then \(N\to \infty \). The difference of evaluations is a bounded continuous function on the pair of probability
+spaces, so expectation passes to the limit. Approximation in \(L^1(\mathbb{E} \widehat{\mathsf{Q}} _\delta ^x+\mathbb{E} \widehat{\mathsf{Q}} _\epsilon ^x)\) extends the inequality to each fixed
+bounded Borel test.
+   </p><div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-17002r1"></a>
+<strong>Lemma 5.1.</strong> </span> <em>On </em>\(C([a,1],\mathbb{R} ^2)\)<em>, the restricted </em>\(\widehat{\mathsf{Q}} _\delta ^x\) <em>are Cauchy in expected Wasserstein distance for cost </em>\(d_a(\gamma ,\gamma ')=1\wedge \left\|\gamma -\gamma '\right\|_\infty \)<em>.</em>
+</p>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>Choose one sufficiently small fixed \(\epsilon \) so the right side of (<a href="#equation-eq:paircutoff">5.1</a>) is small for all smaller cutoffs.
+The annealed probability \(\mathbb{E} \widehat{\mathsf{Q}} _\epsilon ^x\) is tight. Applying the Borel version of the inequality to the complement
+of a compact set proves annealed tightness uniformly for sufficiently small cutoffs.
+</p><p class="indent">   On a deterministic compact set \(K\), the bounded one-Lipschitz functions have a finite uniform \(\eta \)-net, by
+Arzelà–Ascoli. Use (<a href="#equation-eq:paircutoff">5.1</a>) on its finitely many representatives \(F_1,\ldots ,F_M\). The expected Wasserstein distance is
+bounded by </p><div class="display-math">
+\begin{equation*} \sum _{i=1}^M\mathbb{E} |\widehat{\mathsf{Q}} _\delta ^xF_i-\widehat{\mathsf{Q}} _\epsilon ^xF_i| +2\eta +2\mathbb{E} \widehat{\mathsf{Q}} _\delta ^x(K^c)+2\mathbb{E} \widehat{\mathsf{Q}} _\epsilon ^x(K^c)\,. \end{equation*}
+</div> First send the cutoffs to zero with the compact set and net fixed; then send \(\eta \) to zero. This
+proves the claim. The Wasserstein metric for the complete bounded cost \(d_a\) is complete and metrizes weak
+convergence. A subsequence with summable consecutive expected distances is almost surely Cauchy; the
+full family then converges in expected distance. Its limit is measurable on the same flow
+space. <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<p class="indent">   We now control the complete continuum path, rather than merely its restrictions. The
+Wiener first moment of the unnormalized measure gives \(\mathbb{E} \widehat{\mathsf{M}} _\delta ^x=P_x^{\rm BM}\). Passing (<a href="#equation-eq:massinverse">2.11</a>) at fixed \(\delta \) by the lower
+semicontinuity of \(w\mapsto w^{-1}\) gives \(\mathbb{E} (W_\delta ^x)^{-1}\le C(1+|\log \delta |)\). For any Borel event \(A\), since \(0\le \widehat{\mathsf{M}} _\delta ^x(A)\le W_\delta ^x\), </p><div class="display-math" id="equation-eq:numeratorinverse">
+\begin{equation} \mathbb{E} \widehat{\mathsf{Q}} _\delta ^x(A)\le \{C(1+|\log \delta |)P_x^{\rm BM}(A)\}^{1/2}\,.\tag{5.2}\end{equation}
+</div><p> Indeed \(V/W\le \sqrt {V/W}\) when \(0\le V\le W\), and Cauchy–Schwarz applies
+to \(\sqrt V\sqrt {W^{-1}}\).
+   </p><div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-17004r2"></a>
+<strong>Lemma 5.2.</strong> </span> <em>For each </em>\(r&gt;0\)<em>, </em></p><div class="display-math" id="equation-eq:continuumzero">
+\begin{equation} \lim _{a\downarrow 0}\limsup _{\delta \downarrow 0} \mathbb{E} \widehat{\mathsf{Q}} _\delta ^x\{\sup _{t\le a}|X_t-x|&gt;r\}=0\,.\tag{5.3}\end{equation}
+</div>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>Put \(L=|\log \delta |\), \(a_j=2^{-j}\), and choose \(b=a_{\lfloor \log _2L\rfloor }\in [1/L,2/L]\). Brownian maximal bounds and (<a href="#equation-eq:numeratorinverse">5.2</a>) bound the initial interval \([0,b]\) by \(C\sqrt L e^{-cr^2L}\). Cover
+the rest of \([0,2a_J]\) by \([a_j,2a_j]\), \(J\le j\le \lfloor \log _2L\rfloor \). On the \(j\)th annulus compare with the cutoff \(\epsilon _j=e^{-1/a_j}\) using (<a href="#equation-eq:paircutoff">5.1</a>). For sufficiently small fixed
+outer scale \(a_J\), \(\sqrt {\epsilon _j}\le a_j/8\) for every \(j\ge J\). For large \(L\), also \(\sqrt \delta \le 1/(8L)\le a_j/8\) for every annulus used. Thus the entire excursion probability
+is at most </p><div class="display-math" id="equation-eq:continuumzerobound">
+\begin{equation} C\sqrt L e^{-cr^2L}+C(1+\log L)\rho (L) +C\sum _{j\ge J}\left \{\rho (1/a_j)+a_j^{-1/2}e^{-cr^2/a_j}\right \}\,.\tag{5.4}\end{equation}
+</div> The second term tends to zero. Both series converge and their tails tend to zero, since \(\rho (1/a_j)=a_j^{1/12}(\log (1/a_j))^{1/6}+a_j\). This
+proves the lemma, taking \(L\to \infty \) before \(J\to \infty \). <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<p class="indent">   Let \(T_a\) extend a tail path by linear interpolation from \(x\) at time \(0\) to its value at \(a\). It is one-Lipschitz for
+the bounded uniform metrics. A path starting at \(x\) differs from this extension by at most \(2\sup _{t\le a}|X_t-x|\). Consequently
+the full Wasserstein distance \(\mathsf W_0\) satisfies </p><div class="display-math">
+\begin{align*} \mathbb{E} \mathsf W_0(\widehat{\mathsf{Q}} _\delta ^x,\widehat{\mathsf{Q}} _\epsilon ^x) &amp;\le 4r+\mathbb{E} \widehat{\mathsf{Q}} _\delta ^x\{\sup _{t\le a}|X_t-x|&gt;r\} +\mathbb{E} \widehat{\mathsf{Q}} _\epsilon ^x\{\sup _{t\le a}|X_t-x|&gt;r\}\\ &amp;\quad +\mathbb{E} \mathsf W_a(\operatorname{res} _a\widehat{\mathsf{Q}} _\delta ^x,\operatorname{res} _a\widehat{\mathsf{Q}} _\epsilon ^x)\,. \end{align*}
+</div>
+<p class="indent">   First send \(\delta ,\epsilon \downarrow 0\), then \(a\downarrow 0\), and then \(r\downarrow 0\). Lemmas <a href="#x1-17002r1">5.1</a> and <a href="#x1-17004r2">5.2</a> show that the full family is Cauchy in
+expected \(\mathsf W_0\). Its limit \(\mathsf{Q} ^x\) is a measurable random probability on \(\Gamma \). The set \(\{X(0)=x\}\) is closed and has full
+mass for every cutoff, so it also has full mass for the limit. This proves the first assertion of
+Theorem <a href="#x1-2005r1">1.1</a>. This direct full-path Cauchy argument avoids a separate projective-extension
+construction.
+</p>
+<h4 id="the-discrete-prefix-and-the-lattice-limit"><span class="titlemark">6   </span> <a id="x1-180006"></a>The discrete prefix and the lattice limit</h4>
+<p class="noindent">The discrete initial segment still needs its own estimate. A sequence can converge on every fixed
+positive-time tail while making an excursion at times tending to zero. Here the common finite-lattice
+range (<a href="#equation-eq:Lrange">2.6</a>) permits the required growing family of cutoffs.
+</p>
+<div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-18001r1"></a>
+<strong>Proposition 6.1.</strong> </span> <em>For each </em>\(r&gt;0\)<em>, </em></p><div class="display-math" id="equation-eq:discretezero">
+\begin{equation} \lim _{a\downarrow 0}\limsup _{N\to \infty } \mathbb{E} \mathsf{Q} _N^x\{\sup _{0\le t\le a}|X_N(t)-x|&gt;r\}=0\,.\tag{6.1}\end{equation}
+</div>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>For any walk event \(A\), the numerator mass \(V=\mathsf{M} _N^x(A)\) has \(\mathbb{E} V=P_{x_N}(A)\) and \(0\le V\le Z_{0,N}(x_N,1)\). The argument for (<a href="#equation-eq:numeratorinverse">5.2</a>) and (<a href="#equation-eq:massinverse">2.11</a>) give </p><div class="display-math" id="equation-eq:discretenumerator">
+\begin{equation} \mathbb{E} \mathsf{Q} _N^x(A)\le \{C\log N\,P_{x_N}(A)\}^{1/2}\,.\tag{6.2}\end{equation}
+</div>
+Put \(b_N=(\log \log N)^{-2}\). Walk maximal bounds, with \(|\sqrt {2/N}\,x_N-x|=O(N^{-1/2})\) and interpolation errors absorbed, bound an excursion on \([0,b_N]\) by
+<div class="display-math">
+\begin{equation*} C\sqrt {\log N}\exp (-cr^2/b_N)\longrightarrow 0\,. \end{equation*}
+</div>
+<p class="indent">   Fix a small outer dyadic scale \(a_J=2^{-J}\) and cover \([b_N,2a_J]\) by the annuli \([a_j,2a_j]\), \(J\le j\le j_N\), with \(a_{j_N}\in (b_N/2,b_N]\). For each annulus choose \(\delta _j=e^{-1/a_j}\), so \(L_j=1/a_j\).
+Eventually, </p><div class="display-math" id="equation-eq:movingrange">
+\begin{equation} L_0\le L_j\le 2(\log \log N)^2\le \log N\,.\tag{6.3}\end{equation}
+</div> Take the outer scale small enough that \(e^{-1/(2a_j)}\le a_j/8\) for every \(j\ge J\). As \(Nb_N\to \infty \), the integers \(k_j=\lfloor a_jN\rfloor \) simultaneously
+satisfy \(k_j\ge 16\) and \(k_j\ge 4[\sqrt {\delta _j}N]\). Indeed \(4[\sqrt {\delta _j}N]\le a_jN/2+8\le \lfloor a_jN\rfloor \) once \(a_jN\ge 18\); the smallest \(a_jN\) tends to infinity. Thus Proposition <a href="#x1-16001r1">4.1</a> applies
+simultaneously to every annular excursion event, including its interpolation segment.
+<p class="indent">   For the delayed law, the numerator has ordinary walk mean and its inverse mass is at most \(C(1+L_j)\).
+Therefore its annular excursion contribution is at most \(Ca_j^{-1/2}e^{-cr^2/a_j}\), uniformly in the displayed range. Summing the
+comparison and delayed contributions gives </p><div class="display-math">
+\begin{equation*} \limsup _{N\to \infty }\mathbb{E} \mathsf{Q} _N^x\{\sup _{t\le 2a_J}|X_N(t)-x|&gt;r\} \le C\sum _{j\ge J}\{\rho (1/a_j)+a_j^{-1/2}e^{-cr^2/a_j}\}\,. \end{equation*}
+</div> The series tail tends to zero as \(J\to \infty \). Together with the initial \(b_N\)
+estimate, this proves (<a href="#equation-eq:discretezero">6.1</a>). <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof of Theorem </em><a href="#x1-2005r1"><em>1.1</em></a><em>, lattice convergence.</em> </span>  For  each  fixed \(a&gt;0\),  Proposition <a href="#x1-16001r1">4.1</a>  compares  the
+annealed tail law with one fixed-cutoff law with arbitrarily small error, uniformly over deterministic
+bounded  tail  tests.  Section <a href="#the-fixedcutoff-path-limit">3</a>  gives  tightness  of  that  fixed-cutoff  sequence.  Approximation  of
+compact-complement indicators by continuous tests gives annealed tightness on \(C([a,1],\mathbb{R} ^2)\).
+</p><p class="indent">   Here is the full modulus argument. For \(\epsilon ,\eta &gt;0\), Proposition <a href="#x1-18001r1">6.1</a> permits a fixed \(a&gt;0\) such that the limiting
+upper probability of \(\sup _{t\le 2a}|X_N(t)-x|&gt;\epsilon /4\) is below \(\eta \). Tail tightness on \([a,1]\) gives an \(h&lt;a\) for which the limiting upper
+probability of a tail oscillation exceeding \(\epsilon \) over an interval of length \(h\) is below \(\eta \). A pair of times at
+distance at most \(h\) whose earlier time is below \(a\) lies in \([0,2a]\); every other pair is controlled by the
+tail modulus. Thus </p><div class="display-math">
+\begin{equation*} \lim _{h\downarrow 0}\limsup _{N\to \infty }\mathbb{E} \mathsf{Q} _N^x\{\sup _{|s-t|\le h}|X_N(s)-X_N(t)|&gt;\epsilon \}=0\,. \end{equation*}
+</div> The initial values are deterministic and converge to \(x\). Finitely many
+exceptional \(N\) are handled by decreasing \(h\), since each fixed- \(N\) law is supported on continuous paths.
+The uniform modulus criterion and Arzelà–Ascoli give tightness of the full annealed path
+probabilities.
+<p class="indent">   Tightness of annealed probabilities implies tightness of the laws of the random probabilities. To see
+this, for each \(\epsilon &gt;0\) choose deterministic compact sets \(K_j\) with \(\sup _N\mathbb{E} \mathsf{Q} _N^x(K_j^c)\le \epsilon 2^{-2j}\). Markov’s inequality shows that with probability
+at least \(1-\epsilon \), \(\mathsf{Q} _N^x(K_j^c)\le 2^{-j}\) for every \(j\). These constraints define a uniformly tight family of probabilities and thus a
+relatively compact set in \(\mathcal P(\Gamma )\). Finite exceptional values of \(N\) can be included by enlarging the compact
+sets.
+</p><p class="indent">   Every subsequential random-probability limit is supported on \(C_x([0,1],\mathbb{R} ^2)\). Indeed evaluation at zero is
+continuous, and each prelimit initial marginal is the deterministic point mass at \(\sqrt {2/N}\,x_N\to x\). Testing this marginal
+against a countable determining class proves the support assertion almost surely.
+</p><p class="indent">   To identify a subsequential law, fix finitely many deterministic bounded continuous tail tests \(F_1,\ldots ,F_d\),
+possibly on different positive-time intervals and from a finite list of starts. Proposition <a href="#x1-16001r1">4.1</a> bounds the
+expected error of every evaluation by \(C\rho (|\log \delta |)\). For fixed \(\delta \), the joint fixed-cutoff limit identifies their
+evaluations as those of \(\widehat{\mathsf{Q}} _\delta ^x\). Sending \(\delta \downarrow 0\) uses the same-space convergence already proved. The
+converging-together argument therefore identifies the joint laws of all such evaluations as those
+of \(\mathsf{Q} ^x\).
+</p><p class="indent">   Take a countable determining collection on each dyadic tail interval. Their evaluations jointly
+determine a random probability supported on \(C_x([0,1],\mathbb{R} ^2)\): the restrictions determine every path, and their Borel
+sigma field is the full one. Hence every subsequential random-probability law is \(\operatorname{Law} (\mathsf{Q} ^x)\). This proves the lattice
+limit. All estimates and finite-dimensional identifications work on finite products, proving the claimed
+joint assertion. <span aria-label="End of proof" class="qed">□</span>
+</p>
+</div>
+<p class="noindent"><span class="paragraphHead" id="proof-status-and-scope"><a id="x1-19000"></a><strong>Proof status and scope.</strong></span>
+   The proof imports the previously constructed flow and unpinned path measure, its moment
+semigroup, and the stated Gaussian, renewal and fourth-moment estimates. It proves the additional path
+and cutoff arguments above and in the appendix. It is a natural-language deduction from these inputs,
+not a formal verification. The existing Lean work was not run or resumed. No assertion is made here
+about deterministic point-to-point pinning, an all-start disintegration specified at every point, a path
+density relative to Wiener measure, or a conditional multiplicative-chaos relation after removing the
+cutoff.
+</p>
+<h4 id="discrete-shape-estimates-and-cancellation"><span class="titlemark">A   </span> <a id="x1-20000A"></a>Discrete shape estimates and cancellation</h4>
+<p class="noindent">This appendix proves the estimates for the early boundary used in the main argument. The scalar
+renewal estimates and the fourth-moment theorem are retained from <span class="cite">[<a href="#XKPZ">1</a>, <a href="#XCSZ25">3</a>]</span>; the coefficient and reset
+arguments below are project deductions. They require neither convergence of the point-start polymer nor
+any conclusion about its limiting path law.
+</p><p class="indent">   Write \(R(h)=\sum _{j=1}^h q_{2j}(0)\), with \(R(0)=0\), and let \(\mathcal S_a=\{z:q_a(z)&gt;0\}\). We work at the origin; translation gives the same estimates at any starting
+site. All sums with denominator \(q_a(z)\) are over \(\mathcal S_a\). In particular, no division by zero occurs. Fix \(0&lt;\alpha &lt;1\)
+throughout.
+</p>
+<h5 id="a-norm-adapted-to-the-heat-kernel"><span class="titlemark">A.1   </span> <a id="x1-21000A.1"></a>A norm adapted to the heat kernel</h5>
+<p class="noindent">The rotated coordinates \(U(z)=z_1+z_2\) and \(V(z)=z_1-z_2\) of the planar walk are independent sums of independent Rademacher
+increments. On the one-dimensional \(a\)-step law define the normalized Krawtchouk polynomials by </p><div class="display-math">
+\begin{equation*} K_k^{(a)}(S_a)=\binom ak^{-1/2} \sum _{\substack {A\subset \{1,\ldots ,a\}\\|A|=k}} \prod _{j\in A}\epsilon _j,\qquad 0\le k\le a. \end{equation*}
+</div><p> The
+symmetric Walsh polynomials on the right depend only on \(S_a\). Walsh orthogonality shows that they are an
+orthonormal basis for functions of \(S_a\). Thus \(\psi _{kl}^{(a)}(z)=K_k^{(a)}(U(z))K_l^{(a)}(V(z))\) is an orthonormal basis in \(L^2(q_a)\). For an accessible signed row \(\eta \) put </p><div class="display-math" id="equation-app:norm">
+\begin{equation} c_{kl}^{(a)}(\eta )=\sum _z\eta (z)\psi _{kl}^{(a)}(z),\qquad \mathcal N_{a,\alpha }(\eta )^2 =\sum _{k,l=0}^a(1+k+l)^{-\alpha }|c_{kl}^{(a)}(\eta )|^2.\tag{A.1}\end{equation}
+</div><p>
+The notation \(\|\eta \|_{a,-\alpha }\) denotes the same expression with \((k,l)=(0,0)\) omitted. For a zero-mass row these norms
+agree.
+</p><p class="indent">   Conditional expectation of Walsh monomials gives, for \(a\le v\), </p><div class="display-math" id="equation-app:heat-coeff">
+\begin{equation} E\big [K_k^{(v)}(S_v)\mid S_a\big ] =\sqrt {\binom ak/\binom vk}\,K_k^{(a)}(S_a).\tag{A.2}\end{equation}
+</div><p> Here and below a coefficient with unavailable
+degree is zero. Consequently heat transport multiplies coefficient \((k,l)\) by \(\sqrt {(a)_k(a)_l/((v)_k(v)_l)}\), where \((a)_k\) is a falling
+factorial. It contracts the squared zero-mass norm from age \(a\) to age \(b\) by at most \(a/b\). It also gives,
+for \(a&lt;v\le b\), </p><div class="display-math" id="equation-app:heat-density">
+\begin{equation} f_v:=\sum _z\frac {(\eta q_{v-a})(z)^2}{q_v(z)} \le \sum _{k,l}|c_{kl}^{(a)}(\eta )|^2 e^{-(k+l)(v-a)/b}.\tag{A.3}\end{equation}
+</div><p> These statements allow all accessible rows, including rows supported near the edge of
+\(\mathcal S_a\).
+   </p><div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-21004r1"></a>
+<strong>Lemma A.1 </strong>(One-block coefficient estimate)<strong>.</strong> </span> <em>Let </em>\(L&gt;1\)<em>, </em>\(1\le a&lt;b\)<em>, </em>\(b/a\le L\)<em>, </em>\(h=b-a\)<em>, and </em>\(\Delta =1-\nu R(h)&gt;0\)<em>. Consider independent centered noise
+variables of variance </em>\(\nu \ge 0\) <em>and the transfer </em>\(T=Z_{a,b}\) <em>with weights </em>\(1+\xi \)<em>. Set </em></p><div class="display-math">
+\begin{equation*} D=T-(T\mathbf{1})\otimes q_b,\qquad \varepsilon =\frac {\nu }{\Delta } \left (1+\frac {\nu }{\Delta }\right ). \end{equation*}
+</div> <em>There is </em>\(C_{\alpha ,L}&lt;\infty \) <em>such that </em><span id="equation-app:coefficient-inject"></span><span id="equation-app:coefficient-mass"></span><div class="display-math" id="equation-app:coefficient-shape">
+\begin{align} \mathbb{E} \|\eta D\|_{b,-\alpha }^2 &amp;\le \left (\frac ab+C_{\alpha ,L}\varepsilon \right ) \|\eta \|_{a,-\alpha }^2, &amp;&amp;\eta \mathbf{1}=0,\tag{A.4}\\ \mathbb{E} \|q_aD\|_{b,-\alpha }^2&amp;\le C_{\alpha ,L}\varepsilon ,\tag{A.5}\\ \mathbb{E} |\eta T\mathbf{1}-\eta \mathbf{1}|^2 &amp;\le C_{\alpha ,L}\varepsilon \mathcal N_{a,\alpha }(\eta )^2.\tag{A.6}\end{align}
+</div>
+<p class="indent"> <em>The constants are independent of </em>\(a,b,\nu \) <em>and </em>\(\eta \)<em>.</em>
+</p>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>Let \(Y_{t-}=\eta Z_{a,t-1}q_1\) and \(F_t=\mathbb{E} \sum _zY_{t-}(z)^2/q_t(z)\). The Doob martingale for \(\eta T f\) has time-\(t\) increment </p><div class="display-math">
+\begin{equation*} \sum _zY_{t-}(z)\xi _{t,z}(q_{b-t}f)(z). \end{equation*}
+</div> Its increments are orthogonal in time
+and site. Applying the isometry before the time-\(t\) noise gives <div class="display-math" id="equation-app:volterra">
+\begin{equation} F_t=f_t+\nu \sum _{u=a+1}^{t-1}\sum _v\mathbb{E} Y_{u-}(v)^2 \sum _z\frac {q_{t-u}(z-v)^2}{q_t(z)}.\tag{A.7}\end{equation}
+</div> The following collision inequality preserves
+the critical leading constant: <div class="display-math" id="equation-app:collision">
+\begin{equation} q_u(v)\sum _z\frac {q_r(z-v)^2}{q_{u+r}(z)} \le \left (\frac {u+r+1}{u+1}\right )^2q_{2r}(0).\tag{A.8}\end{equation}
+</div> To prove it, first use the one-dimensional binomial law and write \(v=u-2k\). Its left
+side is <div class="display-math">
+\begin{equation*} 2^{-r}\binom uk\sum _{l=0}^r \frac {\binom rl^2}{\binom {u+r}{k+l}}. \end{equation*}
+</div> Insert \(\binom mj^{-1}=(m+1)\int _0^1x^j(1-x)^{m-j}\,dx\). The polynomial \(\sum _l\binom rl^2x^l(1-x)^{r-l}\) is bounded by \(2^{-r}\binom {2r}{r}\). Indeed it is the circle average of \((1+2\sqrt {x(1-x)}\cos \theta )^r\); its surviving
+even-power coefficients are nonnegative, so its maximum is at \(x=1/2\). The remaining beta integral gives the
+one-dimensional bound with factor \((u+r+1)/(u+1)\). Multiplication of the two independent rotated coordinates proves
+(<a href="#equation-app:collision">A.8</a>).
+<p class="indent">   Divide (<a href="#equation-app:volterra">A.7</a>) by \((t+1)^2\) before iteration. With \(k(r)=q_{2r}(0)\) and </p><div class="display-math">
+\begin{equation*} U(0)=1,\qquad U(r)=\sum _{m\ge 1}\nu ^m k^{*m}(r)\quad (r\ge 1), \end{equation*}
+</div> finite renewal iteration yields <div class="display-math" id="equation-app:renewal-convolution">
+\begin{equation} F_t\le L^2\sum _{v=a+1}^tU(t-v)f_v,\qquad \sum _{r=0}^hU(r)\le \Delta ^{-1},\qquad U(r)\le \frac {C\nu }{r\Delta ^2}\quad (1\le r\le h).\tag{A.9}\end{equation}
+</div> For the last bound use \(r k^{*m}(r)\le m(\sup _s s k(s))R(h)^{m-1}\)
+and sum the geometric series. The factor \(L^2\) is introduced after the renewal iteration; it is not inserted into
+the renewal kernel.
+<p class="indent">   Set \(w_t=b^{-\alpha }(1+b-t)^{\alpha -1}\). Splitting the convolution at half its duration in (<a href="#equation-app:renewal-convolution">A.9</a>) gives </p><div class="display-math">
+\begin{equation*} \sum _{r=0}^dU(r)(1+d-r)^{\alpha -1} \le C_\alpha \Delta ^{-1}(1+\nu /\Delta )(1+d)^{\alpha -1}. \end{equation*}
+</div> Here the first half uses the total mass
+of \(U\), and the second half uses its pointwise bound. Also, for each integer degree \(d\ge 0\), <div class="display-math" id="equation-app:smoothing-sum">
+\begin{equation} b^{-\alpha }\sum _{x=1}^h(1+h-x)^{\alpha -1}e^{-dx/b} \le C_\alpha (1+d)^{-\alpha }.\tag{A.10}\end{equation}
+</div> For \(d=0\), sum
+the power. For \(d\ge 1\) and \(h\le b/(1+d)\), drop the exponential. In the remaining case split at \(h/2\). The first part
+is at most \(C b^{-\alpha }h^{\alpha -1}(b/d)\); the second is at most \(C(h/b)^\alpha e^{-dh/(2b)}\). Both have the required bound. Using (<a href="#equation-app:heat-density">A.3</a>) now gives
+<div class="display-math" id="equation-app:weighted-energy">
+\begin{equation} \nu \sum _{t=a+1}^bw_tF_t \le C_{\alpha ,L}\varepsilon \mathcal N_{a,\alpha }(\eta )^2.\tag{A.11}\end{equation}
+</div>
+<p class="indent">   We record the diagonal mode estimate needed for the shape output: </p><div class="display-math" id="equation-app:diagonal-mode">
+\begin{equation} \sum _{k+l\ge 1}(1+k+l)^{-\alpha } \frac {(t)_k(t)_l}{(b)_k(b)_l}\psi _{kl}^{(t)}(z)^2 \le C_{\alpha ,L}\frac {w_t}{q_t(z)}.\tag{A.12}\end{equation}
+</div> For completeness, the
+one-dimensional Rademacher noise operator with correlation \(\zeta \in [0,1]\) has diagonal bound <div class="display-math">
+\begin{equation*} \sum _k\zeta ^kK_k^{(t)}(u)^2 \le \frac {C}{p_t(u)\sqrt {1+t(1-\zeta )}}. \end{equation*}
+</div> Conditioning on the
+input increments, the modulus of the output characteristic function is \((1-(1-\zeta ^2)\sin ^2\theta )^{t/2}\). Fourier inversion bounds each
+output atom by \(C[1+t(1-\zeta ^2)]^{-1/2}\), which proves the displayed diagonal bound. Multiply the two coordinates, use \((t)_k/(b)_k\le (t/b)^k\), and
+integrate <div class="display-math">
+\begin{equation*} (1+k+l)^{-\alpha } =\frac 1{\Gamma (\alpha )}\int _0^\infty r^{\alpha -1}e^{-(1+k+l)r}\,dr. \end{equation*}
+</div> Since \(t/b\ge 1/L\), the resulting integral is bounded by <div class="display-math">
+\begin{equation*} C_{\alpha ,L}\int _0^\infty \frac {r^{\alpha -1}e^{-r}}{1+b-t+b\min (r,1)}\,dr \le C_{\alpha ,L}b^{-\alpha }(1+b-t)^{\alpha -1}. \end{equation*}
+</div> The final step uses \(\int _0^\infty v^{\alpha -1}/(1+v)\,dv&lt;\infty \), and hence needs
+\(\alpha &lt;1\).
+<p class="indent">   Sum the Doob isometry over the nonconstant terminal modes and use (<a href="#equation-app:weighted-energy">A.11</a>)–(<a href="#equation-app:diagonal-mode">A.12</a>). The
+deterministic part is bounded by \(a/b\) on zero-mass rows and vanishes for the heat row \(q_a\); this
+proves the first two conclusions. For the last conclusion the flat-terminal isometry is </p><div class="display-math">
+\begin{equation*} \mathbb{E} |\eta T\mathbf{1}-\eta \mathbf{1}|^2 =\nu \sum _{t,z}\mathbb{E} Y_{t-}(z)^2. \end{equation*}
+</div> Use \(\max q_t\le C/t\), \(t^{-1}\le L/b\),
+and \(w_t\ge 1/b\), then (<a href="#equation-app:weighted-energy">A.11</a>). All sums are finite. The proof also gives the conditional inequalities for a
+past-measurable input row, with that row held fixed while the independent fresh block is
+averaged. <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<h5 id="uniform-reset-estimates"><span class="titlemark">A.2   </span> <a id="x1-22000A.2"></a>Uniform reset estimates</h5>
+<p class="noindent">Fix \(\rho &gt;24\) and let \(\varrho \in [\rho ,\rho ^2]\). For even \(N\) put </p><div class="display-math" id="equation-app:grid">
+\begin{equation} \begin {aligned} K&amp;=\lfloor \log N/\log \varrho \rfloor +1,\qquad N_0=0,\qquad N_K=N,\\ N_i&amp;=[N\varrho ^{i-K}]\quad (1\le i&lt;K),\qquad j_i=K-i\,. \end {aligned}\tag{A.13}\end{equation}
+</div><p> where \([s]=2\lceil s/2\rceil \). Set \(q_i=q_{N_i}\) and \(T_i=Z_{N_{i-1},N_i}\). For a noninitial block with \(a=N_{i-1}\), \(b=N_i\) and \(h=b-a\), rounding
+gives </p><div class="display-math">
+\begin{equation*} b\le 3N\varrho ^{-j_i},\qquad b/a\le 3\rho ^2,\qquad a/b\le 3/\rho . \end{equation*}
+</div><p> Uniformly for critical parameters in a fixed compact interval \(I\), </p><div class="display-math" id="equation-app:gap">
+\begin{equation} \nu _N^{-1}-R(h)=\pi ^{-1}\log (N/h)+O_I(1).\tag{A.14}\end{equation}
+</div><p> Thus, for all \(j_i\ge J_{\rm raw}\) and \(N\ge N_{\rm raw}\),
+the hypotheses of Lemma <a href="#x1-21004r1">A.1</a> hold and its \(\varepsilon \) is at most \(C/j_i\). These thresholds are common over
+\(\varrho \in [\rho ,\rho ^2]\).
+</p><p class="indent">   Define </p><div class="display-math">
+\begin{align*} B_i&amp;=q_{i-1}T_i\mathbf{1},&amp; D_i&amp;=T_i-(T_i\mathbf{1})\otimes q_i,\\ G_i&amp;=\{|B_i-1|\le 1/2\},&amp; M_i&amp;=\mathbf{1}_{G_i}/B_i,\\ S_i&amp;=M_iT_i+\mathbf{1}_{G_i^c}(\mathbf{1}\otimes q_i),&amp; a_i&amp;=M_i(T_i\mathbf{1}-B_i\mathbf{1}),\\ b_i&amp;=M_iq_{i-1}D_i,&amp; L_i&amp;=M_iD_i. \end{align*}
+</div>
+<p class="indent">   The positive reset kernel \(S_i\) need not be Markov, but \(q_{i-1}S_i\mathbf{1}=1\). Its bad-block branch preserves incoming mass
+and restores the heat shape. Let \(\mathscr F_s=\sigma (\omega _{u,z}:1\le u\le s)\) and \(\mathcal B_i=\mathscr F_{N_i}\). Each block is independent of \(\mathcal B_{i-1}\). For each noninitial block \(i\ge 2\) with \(j_i\ge J_0\)
+and \(N\ge N_*\), and every \(\mathcal B_{i-1}\)-measurable zero-mass accessible row \(\eta \), Lemma <a href="#x1-21004r1">A.1</a> yields, after choosing \(J_0\) large enough,
+</p><div class="display-math" id="equation-app:reset-coeff">
+\begin{align} \mathbb{E} (\|\eta L_i\|^2\mid \mathcal B_{i-1})&amp;\le \kappa \|\eta \|^2, &amp;\kappa &amp;&lt;1,\tag{A.15}\\ \mathbb{E} (\|b_i\|^2\mid \mathcal B_{i-1})&amp;\le C/j_i, &amp;\mathbb{E} (|\eta a_i|^2\mid \mathcal B_{i-1})&amp;\le (C/j_i)\|\eta \|^2, \nonumber \\ |\eta \mathbb{E} (a_i\mid \mathcal B_{i-1})|&amp;\le (C/j_i)\|\eta \|. &amp;&amp;\nonumber \end{align}
+</div><p class="indent">   Norms in an input and output carry their respective ages. The first coefficient is at most \(4(a/b+C/j_i)\), which is
+below one since \(12/\rho &lt;1\). For the drift, use \(\mathbb{E} (\eta T_i\mathbf{1}\mid \mathcal B_{i-1})=0\), \(|M_i-1|\le 2|B_i-1|\), and conditional Cauchy–Schwarz. No samplewise operator bound is
+asserted.
+</p>
+<div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-22004r2"></a>
+<strong>Lemma A.2 </strong>(Fourth moments, including microscopic blocks)<strong>.</strong> </span> <em>There are common </em>\(C,N_*,J_0\) <em>such that</em>
+</p><div class="display-math" id="equation-app:fourth-bound">
+\begin{equation} \mathbb{E} |B_i-1|^4\le C/(j_i+1)^2, \qquad N\ge N_*,\quad 1\le i\le K-J_0.\tag{A.16}\end{equation}
+</div>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>For \(a&gt;0\), Lemma <a href="#x1-21004r1">A.1</a> first gives \(\operatorname {Var}B_i\le C_v/j_i\), independently of fourth moments. Choose \(J_v\ge \max (J_{\rm raw},C_v,1)\), so the variance ceiling is
+one. The heat row satisfies </p><div class="display-math">
+\begin{equation*} D(q_a)=a,\qquad \|q_a\|_2^2=q_{2a}(0)\le C/a,\qquad a/h\le 3/(\rho -3), \end{equation*}
+</div> and, for every fixed \(\widehat t&gt;0\), <div class="display-math">
+\begin{equation*} \sum _zq_a(z)e^{2\widehat t|z|/\sqrt h} \le 4e^{6\widehat t^2/(\rho -3)}. \end{equation*}
+</div> The last bound follows by four signed
+exponential projections and \(\cosh u\le e^{u^2/2}\). These verify the spread, \(\ell ^2\), exponential localization and variance
+hypotheses of <span class="cite">[<a href="#XCSZ25">3</a>, Theorem 1.11, (1.28)–(1.33)]</span>. Obtain its duration threshold \(L_4\) and constant \(C_4\) with
+these fixed data; then set \(h_*=\lceil \max (1,L_4,2\rho ^2)\rceil \). The external theorem gives (<a href="#equation-app:fourth-bound">A.16</a>) on every noninitial block with
+\(h&gt;h_*\).
+<p class="indent">   For \(h\le h_*\), including the initial point-start block, use a direct Gaussian calculation. The partition mass is a
+mixture of path weights under a deterministic probability path law. A fixed path has weight \(Y=e^{\sqrt v G-v/2}\), \(v=h\beta _N^2\), because
+physical times correspond to independent noise coordinates even at spatial revisits. Jensen gives
+</p><div class="display-math">
+\begin{align*} \mathbb{E} |B-1|^4 &amp;\le \mathbb{E} |Y-1|^4=e^{6v}-4e^{3v}+6e^v-3\\ &amp;\le 21e^{6v}v^2 \le 21h_*^2e^{6h_*}\nu _N^2\qquad (\nu _N\le 1). \end{align*}
+</div>
+<p class="indent">   For the middle inequality the expression and its first derivative vanish at zero and its second
+derivative is at most \(42e^{6v}\). We used \(\beta _N^2=\log (1+\nu _N)\le \nu _N\). Since \(\nu _NK\le C_{I,\rho }\) and \(j_i+1\le K\), this proves the required bound. The first block has \(N_1\le 2\rho ^2\le h_*\). Finally
+choose \(J_0\ge \max (J_v,2)\) for contraction and all later absorptions, and enlarge \(N_*\). Thus the fourth-moment constants are
+chosen before the final contraction threshold. The external theorem is never applied at zero spread or
+below its minimum duration. <span aria-label="End of proof" class="qed">□</span>
+</p>
+</div>
+<div class="theorem">
+<p class="noindent"><span class="head">
+<a id="x1-22006r3"></a>
+<strong>Lemma A.3 </strong>(A finite reset history)<strong>.</strong> </span> <em>For </em>\(N\ge N_*\) <em>and </em>\(1\le r\le t\le K-J_0\)<em>, start </em>\(x_{r-1}=q_{r-1}\) <em>and evolve </em>\(x_i=x_{i-1}S_i=R_iq_i+v_i\)<em>, where </em>\(v_i\mathbf{1}=0\)<em>. With </em>\(J=K-t\)<em>, </em></p><div class="display-math" id="equation-app:finite-buffer-bound">
+\begin{equation} \max _{r-1\le i\le t}\mathbb{E} R_i^2\le 2,\qquad \mathbb{E} \|v_i\|^2\le C/j_i,\qquad \mathbb{E} \max _{r\le i\le t}|R_i-1|^2\le C/J.\tag{A.17}\end{equation}
+</div> <em>The constants are
+common over all admissible </em>\(N,r,t,\varrho \) <em>and compact critical parameter interval </em>\(I\)<em>.</em>
+</div>
+<div class="proof">
+<p class="indent"> <span class="head">
+<em>Proof.</em> </span>The exact update is </p><div class="display-math">
+\begin{equation*} R_i=R_{i-1}+v_{i-1}a_i,\qquad v_i=R_{i-1}b_i+v_{i-1}L_i. \end{equation*}
+</div> In particular, the shape update uses the old mass. For \(U_i=\mathbb{E} R_i^2\), \(V_i=\mathbb{E} \|v_i\|^2\), choose a fixed \(\gamma \in (\kappa ,1)\).
+Conditional estimates (<a href="#equation-app:reset-coeff">A.15</a>) and Young’s inequality give <div class="display-math">
+\begin{align*} V_i&amp;\le \gamma V_{i-1}+CU_{i-1}/j_i,\\ U_i&amp;\le U_{i-1}+Cj_i^{-1}\sqrt {U_{i-1}V_{i-1}} +Cj_i^{-1}V_{i-1}. \end{align*}
+</div>
+<p class="indent">   All moments are finite by finite-step induction. Put \(H=\max U_i\). Since \(j_{i-1}=j_i+1\), iteration gives \(V_i\le CH/j_i\). Summing the
+second inequality gives \(H\le 1+CH/\sqrt J\); increase \(J_0\) to obtain \(H\le 2\). Decompose the scalar increments into their
+\(\mathcal B_{i-1}\)-conditional drift and martingale difference. The drift has \(L^2\) norm at most \(Cj_i^{-3/2}\), and the martingale
+increment has squared \(L^2\) norm at most \(Cj_i^{-2}\). Minkowski’s inequality and Doob’s inequality give the last
+assertion.
+</p><p class="indent">   When \(r=1\), the first block is handled separately. Two walks have at most \(N_1\) common physical times,
+so </p><div class="display-math">
+\begin{equation*} \mathbb{E} \sum _z\frac {(Z_{0,N_1}(0,z)-q_{N_1}(z))^2}{q_{N_1}(z)} \le (1+\nu _N)^{N_1}-1\le C_\rho \nu _N. \end{equation*}
+</div> Indeed each pair-path weight has expected product at most \((1+\nu _N)^{N_1}\), while its first moment is
+the walk kernel. Here \(R_1=1\) exactly and \(\mathbb{E} \|v_1\|^2\le 4C_\rho \nu _N\le C/j_1\). The resulting geometric initial term is bounded by \(C/j_i\)
+at subsequent blocks, so the preceding argument applies. Lemma <a href="#x1-21004r1">A.1</a> is not used at age
+zero. <span aria-label="End of proof" class="qed">□</span>
+   </div>
+<p class="indent">   For the physical row </p><div class="display-math">
+\begin{equation*} y_t=\frac {q_{r-1}T_r\cdots T_t}{\prod _{i=r}^t B_i},\qquad R_t^{\rm ph}=y_t\mathbf{1},\qquad \mu _t=y_t/R_t^{\rm ph},\qquad \Omega =\bigcap _{i=r}^tG_i, \end{equation*}
+</div><p> Lemma <a href="#x1-22004r2">A.2</a> and a union bound give \(\mathbb{P} (\Omega ^c)\le C/J\). On \(\Omega \), physical and reset rows agree.
+Therefore, on \(A=\Omega \cap \{|R_t^{\rm ph}-1|\le 1/2\}\), </p><div class="display-math" id="equation-app:physical-shape">
+\begin{equation} \mathbb{P} (A^c)\le C/J,\qquad \mathbb{E} [\mathbf{1}_A\|\mu _t-q_t\|^2]\le C/J.\tag{A.18}\end{equation}
+</div><p> The denominator costs at most four in the squared norm. These indicators remain in
+every subsequent estimate.
+   </p><h5 id="the-terminal-response-and-a-common-buffer"><span class="titlemark">A.3   </span> <a id="x1-23000A.3"></a>The terminal response and a common buffer</h5>
+<p class="noindent">Let \(M_N(h)=\mathbb{E} [Z_{0,h}(0,\mathbf{1})^2]\). The full-horizon renewal input from <span class="cite">[<a href="#XKPZ">1</a>, (4.1), Claim B.1]</span> gives \(\sup _{h\le N}\nu _NM_N(h)\le C\). For a deterministic accessible
+zero-mass row \(\eta \) at time \(n\), first-noise expansion yields </p><div class="display-math" id="equation-app:first-noise">
+\begin{equation} \eta Z_{n,N}f=\eta q_{N-n}f+ \sum _{u=n+1}^N\sum _z(\eta q_{u-n})(z)\xi _{u,z}Z_{u,N}(z,f).\tag{A.19}\end{equation}
+</div><p> The terms are orthogonal: for different first-noise
+times integrate the earlier centered noise, and for equal times use independence at different sites. In
+particular </p><div class="display-math" id="equation-app:response-isometry">
+\begin{equation} H_{n,N}(\eta )^2:=\mathbb{E} |\eta Z_{n,N}\mathbf{1}|^2 =\nu _N\sum _{r=1}^{N-n}\|\eta q_r\|_2^2M_N(N-n-r).\tag{A.20}\end{equation}
+</div><p> By (<a href="#equation-app:heat-coeff">A.2</a>) and \(\max q_{n+r}\le C/(n+r)\), </p><div class="display-math" id="equation-app:response-norm">
+\begin{align} \sum _{r\ge 1}\|\eta q_r\|_2^2 &amp;\le C\sum _{k+l\ge 1}\frac {|c_{kl}^{(n)}(\eta )|^2}{k+l} \le C_\alpha \|\eta \|_{n,-\alpha }^2.\tag{A.21}\end{align}
+</div><p class="indent">   For degree \(d\ge 1\), the summation used here is \(\sum _{r\ge 1}(n/(n+r))^d/(n+r)\le 1/d\), by comparison with its decreasing integral. Hence \(H_{n,N}(\eta )\le C\|\eta \|_{n,-\alpha }\), including
+when the terminal slab is not subcritical.
+</p><p class="indent">   For deterministic bounded \(f\), positivity gives \(|Z_{u,N}(z,f)|\le \|f\|_\infty Z_{u,N}(z,\mathbf{1})\). The deterministic term in (<a href="#equation-app:first-noise">A.19</a>), for \(n\le N/2\), is at most \(C_\alpha \|f\|_\infty \sqrt {n/N}\|\eta \|_{n,-\alpha }\): use
+the heat-relative \(L^2\) norm and \((n/N)^d\le C_\alpha (n/N)(1+d)^{-\alpha }\). Thus </p><div class="display-math" id="equation-app:terminal-response">
+\begin{equation} \big (\mathbb{E} |\eta Z_{n,N}f|^2\big )^{1/2} \le C\|f\|_\infty \|\eta \|_{n,-\alpha }.\tag{A.22}\end{equation}
+</div><p> The same estimate holds conditionally on \(\mathscr F_n\) for a past-measurable
+accessible row with finite second norm moment. Its row is held fixed and only the independent future
+noise is averaged.
+</p><p class="indent">   Assume \(p=K-2J\), \(t=K-J\), \(J\ge J_0\), \(2J\le K-1\), and put \(m=N_p\), \(n=N_t\le N/2\). A signed reset history on these \(J\) common blocks starting from a
+past-measurable zero-mass row \(w\) has state \(r_\ell q+u_\ell \), initially \((r_0,u_0)=(0,w)\). Put \(W=\mathbb{E} \|w\|^2\), \(U_\ell =\mathbb{E} r_\ell ^2\) and \(V_\ell =\mathbb{E} \|u_\ell \|^2\). All indices on this buffer are between
+\(J\) and \(2J-1\). From (<a href="#equation-app:reset-coeff">A.15</a>), </p><div class="display-math">
+\begin{equation*} V_\ell \le \gamma V_{\ell -1}+CU_{\ell -1}/J. \end{equation*}
+</div><p> For \(H=\mathbb{E} \max _{\ell \le J}|r_\ell |^2\), iteration gives \(V_\ell \le \gamma ^\ell W+CH/J\). The drift and martingale estimates then give
+</p><div class="display-math">
+\begin{align*} \|\max |\text {drift}|\|_2&amp;\le C\sqrt W/J+C\sqrt {H/J},\\ \|\max |\text {martingale}|\|_2&amp;\le C\sqrt {W/J}+C\sqrt {H/J}. \end{align*}
+</div>
+<p class="indent">   Absorb the term \(CH/J\) in \(H\le CW/J+CH/J\), increasing \(J_0\) once. It follows that </p><div class="display-math" id="equation-app:common-signed">
+\begin{equation} \mathbb{E} \max _{\ell \le J}|r_\ell |^2\le CW/J,\qquad \mathbb{E} \|u_\ell \|^2\le \gamma ^\ell W+CW/J^2.\tag{A.23}\end{equation}
+</div><p class="indent">   Run the full reset history to \(m\) and write \(x_m=R_mq_m+v_m\). Through the same subsequent kernels run histories
+starting at \(q_m\) and \(v_m\). Denote their terminal states by \(y_n=R_yq_n+v_y\) and \(z_n=rq_n+u\). Linearity gives \(x_n=R_my_n+z_n\). With \(R_x=x_n\mathbf{1}\), the exact
+cancellation is </p><div class="display-math" id="equation-app:cancellation">
+\begin{equation} \frac {x_n}{R_x}-\frac {y_n}{R_y} =\frac {u}{R_x}-\frac {r v_y}{R_xR_y}.\tag{A.24}\end{equation}
+</div><p> In particular no division by \(R_m\) occurs. By Lemma <a href="#x1-22006r3">A.3</a>, \(W=\mathbb{E} \|v_m\|^2\le C/J\) and \(\mathbb{E} \|v_y\|^2\le C/J\). Thus (<a href="#equation-app:common-signed">A.23</a>)
+gives </p><div class="display-math">
+\begin{equation*} \|r\|_2\le C/J,\qquad (\mathbb{E} \|u\|^2)^{1/2}\le C(\gamma ^{J/2}/\sqrt J+J^{-3/2})\le CJ^{-3/2}. \end{equation*}
+</div><p> Let </p><div class="display-math" id="equation-app:good-event">
+\begin{equation} \mathcal G=\bigcap _{i=1}^tG_i \cap \{|R_x-1|\le 1/2\}\cap \{|R_y-1|\le 1/2\}\in \mathscr F_n.\tag{A.25}\end{equation}
+</div><p> The preceding fourth-moment and reset estimates show \(\mathbb{P} (\mathcal G^c)\le C/J\). On \(\mathcal G\), the normalized
+reset histories equal the physical rows </p><div class="display-math">
+\begin{equation*} \mu _n=\frac {Z_{0,n}(0,\cdot )}{Z_{0,n}(0,\mathbf{1})},\qquad \widehat \mu _{m,n}= \frac {q_mZ_{m,n}}{q_mZ_{m,n}\mathbf{1}}. \end{equation*}
+</div><p> Their difference \(\eta \) has zero mass. From (<a href="#equation-app:cancellation">A.24</a>) and
+Cauchy–Schwarz, </p><div class="display-math" id="equation-app:boundary-shape">
+\begin{equation} \mathbb{E} [\mathbf{1}_{\mathcal G}\|\eta \|_{n,-\alpha }]\le CJ^{-3/2}.\tag{A.26}\end{equation}
+</div><p> Only a first norm moment is claimed: the product \(r v_y\) need not have the additional
+moments needed to square this bound. Conditioning in (<a href="#equation-app:terminal-response">A.22</a>) gives, for deterministic bounded \(f\),
+</p><div class="display-math" id="equation-app:boundary-terminal">
+\begin{equation} \mathbb{E} [\mathbf{1}_{\mathcal G}|\mu _nZ_{n,N}f- \widehat \mu _{m,n}Z_{n,N}f|] \le C\|f\|_\infty J^{-3/2}.\tag{A.27}\end{equation}
+</div><p class="indent">   Each physical history separately satisfies \(\mathbb{E} [\mathbf{1}_{\mathcal G}\|\mu -q_n\|_{n,-\alpha }^2]\le C/J\) by (<a href="#equation-app:physical-shape">A.18</a>). First collision and the full critical renewal bound
+give </p><div class="display-math">
+\begin{equation*} \mathbb{E} (q_nZ_{n,N}\mathbf{1})^2 =1+\sum _{u=n+1}^Nq_{2u}(0)\nu _NM_N(N-u) \le 1+C\log (N/n)\le CJ. \end{equation*}
+</div><p> Apply (<a href="#equation-app:terminal-response">A.22</a>) to the difference of each row from \(q_n\), conditionally on \(\mathscr F_n\). For \(X=\mu _nZ_{n,N}\mathbf{1}\) and \(Y=\widehat \mu _{m,n}Z_{n,N}\mathbf{1}\) this proves </p><div class="display-math" id="equation-app:individual-future">
+\begin{equation} \mathbb{E} [\mathbf{1}_{\mathcal G}(X^2+Y^2)]\le CJ.\tag{A.28}\end{equation}
+</div><p> This is an
+integrated estimate on a past-measurable event. It is not a pointwise bound on the conditional second
+moment of every possible past. Every threshold and constant in this appendix is uniform over the
+compact ratio interval, so these conclusions may be used with the growing cutoff families specified in the
+main text.
+   </p><h4 id="references"><a id="x1-24000"></a>References</h4>
+<div class="thebibliography">
+<p class="bibitem"><span class="biblabel">
+  [1]<span class="bibsp">   </span></span><a id="XKPZ"></a>Q. Berger, F. Caravenna, J. Clark, A. Dunlap, Y. Gu, Z. Liu, S. Nakajima, R. Sun, L.-C.
+    Tsai, Z. Xie and N. Zygouras. <em>The Critical 2D KPZ Process</em>.  <a href="https://arxiv.org/abs/2610.31614v1">arXiv:2610.31614v1</a>, 22 October
+    2026.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [2]<span class="bibsp">   </span></span><a id="XCSZ23"></a>F. Caravenna, R. Sun and N. Zygouras. <em>The Critical 2d Stochastic Heat Flow</em>. Invent.
+    Math. <strong>233 </strong>(2023), 325–460.  <a href="https://arxiv.org/abs/2109.03766v3">arXiv:2109.03766v3</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [3]<span class="bibsp">   </span></span><a id="XCSZ25"></a>F.  Caravenna,  R.  Sun  and  N.  Zygouras.  <em>Singularity and regularity of the critical 2D
+    Stochastic Heat Flow</em>.   <a href="https://arxiv.org/abs/2504.06128v2">arXiv:2504.06128v2</a>. All result locators in this manuscript refer to
+    version 2.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [4]<span class="bibsp">   </span></span><a id="XCM"></a>J.   Clark   and   B.   Mian.   <em>Continuum   Polymer   Measures   Corresponding   to   the
+    Critical  2d  Stochastic  Heat  Flow</em>.  Commun.  Math.  Phys.  <strong>407  </strong>(2026),  article  152.
+    <a href="https://doi.org/10.1007/s00220-026-05677-3">doi:10.1007/s00220-026-05677-3</a>. All theorem numbers refer to the published version.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [5]<span class="bibsp">   </span></span><a id="XCT"></a>J.   Clark   and   L.-C.   Tsai.   <em>Conditional   GMC   within   the   stochastic   heat   flow</em>.
+    <a href="https://arxiv.org/abs/2507.16056v1">arXiv:2507.16056v1</a>, 21 July 2025.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [6]<span class="bibsp">   </span></span><a id="XGabriel"></a>S.  Gabriel.  <em>Central  limit  theorems  for  the  (2+1)-dimensional  directed  polymer  in  the
+    weak disorder limit</em>. Ann. Inst. H. Poincaré Probab. Statist. <strong>59 </strong>(2023), no. 4, 1984–2016.
+    <a href="https://doi.org/10.1214/22-AIHP1351">doi:10.1214/22-AIHP1351</a>. Theorem 1.2 is also in  <a href="https://arxiv.org/abs/2104.07755v4">arXiv:2104.07755v4</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [7]<span class="bibsp">   </span></span><a id="XTsai"></a>L.-C. Tsai. <em>Stochastic heat flow by moments</em>.  <a href="https://arxiv.org/abs/2410.14657v3">arXiv:2410.14657v3</a>, 16 March 2026.</p></div>
+<p class="noindent"><span class="paragraphHead" id="preparation"><a id="x1-25000"></a><strong>Preparation.</strong></span>
+   This manuscript rewrites the revised project proof of 3 November 2026 and its finite-lattice arguments. Its
+mathematical review is internal. The exposition and layout follow Scott Armstrong and Amelie Loher’s
+<em>math-paper-skills</em>, revision <code>4ec9c7b</code>, available at <a class="url" href="https://github.com/amelieloher/math-paper-skills"><code>https://github.com/amelieloher/math-paper-skills</code></a>.
+These writing resources are guidance, not a mathematical input. AI assistants prepared the text and
+performed the internal checks; no external verification or formal proof is asserted.
+</p>
+      </article>
     </main>
   </div>
 </body>
