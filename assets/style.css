@@ -92,6 +92,23 @@ a:focus-visible {
   margin-top: 0.85em;
 }
 
+.tumbleweed summary {
+  cursor: pointer;
+}
+
+.tumbleweed img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tumbleweed img {
+    display: none;
+  }
+}
+
 hr {
   margin: 2em 0;
   border: 0;
